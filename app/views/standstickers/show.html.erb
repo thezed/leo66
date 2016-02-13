@@ -1,0 +1,61 @@
+<% title "Наклейки на шкафчики" %>
+
+<table>
+<tr>
+<td id='showpic'>
+<%= image_tag @standsticker.image.url(:big), :alt => "Стенды и наклейки на шкафчики", :title => "Стенды и наклейки на шкафчики" %>
+
+</td>
+<td style="vertical-align: middle !important;">
+
+<p><b><%= @standsticker.name %></b></p>
+
+<p>
+  <b>Артикул:</b>
+  <%= @standsticker.artikul %>
+</p>
+
+<p>
+  <b>Цена:</b>
+  <%= @standsticker.price %> руб.
+</p>
+
+<p>
+  <b>Размер:</b>
+  <%= @standsticker.size %>
+</p>
+
+<p>
+  <b>Формат карманов:</b>
+  <%= @standsticker.format %>
+</p>
+
+<p>
+  <b>Дополнительно:</b>
+  <%= @standsticker.additional %>
+</p>
+
+<%= render :partial => "orders/form" %>
+
+</td>
+</tr>
+</table>
+
+<br />
+<br />
+<b>Другие товары:</b>
+<div class="sliderGallery">
+    <ul>
+	  <% @thumbs.each do |thumb| %>
+		<li><%= link_to image_tag(thumb.image.url(:medium)), thumb %></li>
+      <% end %>
+    </ul>        	
+	<div class="slider ui-slider">
+        <a href="javascript:void(0)" style="outline: medium none; border: medium none;"><div style="left: 0pt;" class="handle ui-slider-handle-active"></div></a>
+    </div>
+</div>
+
+<% if can? :create, @standstickers %>
+	<%= link_to 'Редактировать', edit_standsticker_path(@standsticker) %> |
+<% end %>
+<%= link_to 'Назад', standstickers_path %>

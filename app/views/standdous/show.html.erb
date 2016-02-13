@@ -1,0 +1,61 @@
+<% title "Дополнительное образование" %>
+
+<table>
+<tr>
+<td id='showpic'>
+<%= image_tag @standdou.image.url(:big), :alt => "Стенды для дополнительных образованых учреждений", :title => "Стенды для дополнительных образованых учреждений" %>
+
+</td>
+<td style="vertical-align: middle !important;">
+
+<p><b><%= @standdou.name %></b></p>
+
+<p>
+  <b>Артикул:</b>
+  <%= @standdou.artikul %>
+</p>
+
+<p>
+  <b>Цена:</b>
+  <%= @standdou.price %> руб.
+</p>
+
+<p>
+  <b>Размер:</b>
+  <%= @standdou.size %>
+</p>
+
+<p>
+  <b>Формат карманов:</b>
+  <%= @standdou.format %>
+</p>
+
+<p>
+  <b>Дополнительно:</b>
+  <%= @standdou.additional %>
+</p>
+
+<%= render :partial => "orders/form" %>
+
+</td>
+</tr>
+</table>
+
+<br />
+<br />
+<b>Другие товары:</b>
+<div class="sliderGallery">
+    <ul>
+	  <% @thumbs.each do |thumb| %>
+		<li><%= link_to image_tag(thumb.image.url(:medium)), thumb %></li>
+      <% end %>
+    </ul>        	
+	<div class="slider ui-slider">
+        <a href="javascript:void(0)" style="outline: medium none; border: medium none;"><div style="left: 0pt;" class="handle ui-slider-handle-active"></div></a>
+    </div>
+</div>
+
+<% if can? :create, @awards %>
+	<%= link_to 'Редактировать', edit_standdou_path(@standdou) %> |
+<% end %>
+<%= link_to 'Назад', standdous_path %>

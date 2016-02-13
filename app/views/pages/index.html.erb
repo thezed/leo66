@@ -1,0 +1,20 @@
+<% if can? :edit, @pages %>
+<% title "Отдельные страницы" %>
+
+<table>
+
+<% @pages.each do |page| %>
+  <tr>
+    <td><%= link_to page.title, page %></td>
+	<% if can? :edit, @pages %>
+   	  <td><%= link_to 'Редактировать', edit_page_path(page) %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if can? :create, @pages %>
+  <%= link_to 'Новая страница', new_page_path %>
+<% end %>
+<% end %>

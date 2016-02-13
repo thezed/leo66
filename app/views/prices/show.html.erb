@@ -1,0 +1,19 @@
+<% title @price.name %>
+
+<p>
+  <b>Порядок:</b>
+  <%= @price.order %>
+</p>
+
+<p>
+  <b>Текст:</b>
+  <%= @price.text %>
+</p>
+<p>
+	<%= link_to @price.pricefile, @price.pricefile.url %>
+</p>
+
+<% if can? :create, @prices %>
+	<%= link_to 'Редактировать', edit_price_path(@price) %> |
+	<%= link_to 'Назад', prices_path %>
+<% end %>

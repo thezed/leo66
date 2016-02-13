@@ -1,0 +1,10 @@
+<% if @page %>
+  <% if can? :edit, @pages %>
+  	<%= link_to 'Редактировать', edit_page_path(@page) %>
+  <% end %>
+
+  <% title @page.title %>
+
+  <%= simple_format @page.text %>
+
+<% end %>

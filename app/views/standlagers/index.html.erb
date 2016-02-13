@@ -1,0 +1,58 @@
+<% title "Детские лагеря" %>
+
+<%= will_paginate(@standlagers, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @standlagers %>
+	<%= link_to 'Добавить запись', new_standlager_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @standlagers.each do |standlager| %>
+  <tr>
+	<td><%= link_to image_tag(standlager.image.url(:small)), standlager %></td>
+    <td><%= standlager.artikul %></td>
+    <td><%= standlager.name %></td>
+    <td><%= standlager.price %></td>
+    <td><%= standlager.size %></td>
+    <td><%= standlager.format %></td>
+    <td><%= standlager.additional %></td>
+    <% if can? :create, @standlagers %>
+		<td><%= link_to 'Редактировать', edit_standlager_path(standlager) %>
+	    <%= link_to 'Удалить', standlager, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @standlagers.each do |standlager| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= link_to image_tag(standlager.image.url(:medium), :alt => "Стенды для детских лагерей", :title => "Стенды для детских лагерей"), standlager %><br />
+		  <%= link_to standlager.artikul+' '+standlager.name, standlager %><br />
+	    <%= link_to "Узнать цену", standlager, :class => "price_button" %>
+    </td>
+  <% if i==4 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@standlagers, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

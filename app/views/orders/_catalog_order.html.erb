@@ -1,0 +1,72 @@
+<div style="margin-top: 8px; padding-left: 2px; padding-top: 2px; padding-right: 1em; padding-bottom: 0.5em;" id="order">
+  <div style="border-bottom: solid 2px grey; margin-bottom: 10px">  
+    <p><span style="color:red">Жители Екатеринбурга</span> могут получить бесплатный каталог по адресу: ул. Чернышевского, 1 (слева от «Рубина») с 10 до 18ч.</p>
+    <p>Почтовая рассылка осуществляется <span style="color:red">по регионам</span>.</p>
+  </div>
+  <%= form_for Order.new, :controller => 'orders' do |f| %>
+    <%#= f.error_messages %>
+  
+    <%= f.hidden_field :artikul, :value => 'Бесплатный Каталог' %>
+    
+	  <p>
+      Ваш ФИО*<br />
+      <%= f.text_field :name, :class => "required" %>
+    </p>
+	  <p>
+      Фактический адрес доставки*<br />
+      <%= f.text_field :name_com, :class => "required" %>
+    </p>
+    <p>
+      <%= f.label :city, 'Город*' %><br />
+      <%= f.text_field :city, :class => "required" %>
+    </p>
+    <p>
+      <%= f.label :phone, raw('Телефон* <font color="red">(с кодом города)</font><br />') %>
+      <%= f.text_field :phone, :class => "required", :name => 'order_phone' %>
+    </p>
+    <p>
+      Email<br />
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.submit 'Заказать' %>
+    </p>
+    <p>Поля, обозначенные *, обязательны для заполнения</p>
+    
+  <% end %>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#new_order").validate({
+      rules: {
+        order_phone: {
+          required: true,
+          minlength: 8
+        }
+      }
+    });
+  });
+</script>
+
+<script>
+  jQuery.extend(jQuery.validator.messages, {
+      required: "<p style='color: red;'>Пожалуйста, заполните поле</p>",
+      remote: "Please fix this field.",
+      email: "Please enter a valid email address.",
+      url: "Please enter a valid URL.",
+      date: "Please enter a valid date.",
+      dateISO: "Please enter a valid date (ISO).",
+      number: "Please enter a valid number.",
+      digits: "Please enter only digits.",
+      creditcard: "Please enter a valid credit card number.",
+      equalTo: "Please enter the same value again.",
+      accept: "Please enter a value with a valid extension.",
+      maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+      minlength: jQuery.validator.format("<p style='color: red;'>Минимальная длина равна {0}</p>"),
+      rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+      range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+      max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+      min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+  });
+</script>

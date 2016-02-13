@@ -1,0 +1,58 @@
+<% title "Плакаты" %>
+
+<%= will_paginate(@printplacards, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @printplacards %>
+	<%= link_to 'Добавить запись', new_printplacard_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @printplacards.each do |printplacard| %>
+  <tr>
+	<td><%= link_to image_tag(printplacard.image.url(:small)), printplacard %></td>
+    <td><%= printplacard.artikul %></td>
+    <td><%= printplacard.name %></td>
+    <td><%= printplacard.price %></td>
+    <td><%= printplacard.size %></td>
+    <td><%= printplacard.format %></td>
+    <td><%= printplacard.additional %></td>
+    <% if can? :create, @printplacards %>
+		<td><%= link_to 'Редактировать', edit_printplacard_path(printplacard) %>
+	    <%= link_to 'Удалить', printplacard, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @printplacards.each do |printplacard| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= link_to image_tag(printplacard.image.url(:medium)), printplacard %><br />
+		  <%= link_to printplacard.artikul+' '+printplacard.name, printplacard %><br />
+	    <%= link_to "Узнать цену", printplacard, :class => "price_button" %>
+    </td>
+  <% if i==4 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@printplacards, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

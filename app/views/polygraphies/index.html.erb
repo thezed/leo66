@@ -1,0 +1,57 @@
+<% title "Полиграфия" %>
+
+<%= will_paginate(@polygraphies, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @polygraphies %>
+	<%= link_to 'Добавить запись', new_polygraphy_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @polygraphies.each do |polygraphy| %>
+  <tr>
+	<td><%= link_to image_tag(polygraphy.image.url(:small)), polygraphy %></td>
+    <td><%= polygraphy.artikul %></td>
+    <td><%= polygraphy.name %></td>
+    <td><%= polygraphy.price %></td>
+    <td><%= polygraphy.size %></td>
+    <td><%= polygraphy.format %></td>
+    <td><%= polygraphy.additional %></td>
+    <% if can? :create, @polygraphies %>
+		<td><%= link_to 'Редактировать', edit_polygraphy_path(polygraphy) %>
+	    <%= link_to 'Удалить', polygraphy, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @polygraphies.each do |polygraphy| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= image_tag(polygraphy.image.url(:big300)) %><br />
+		  <%= polygraphy.name %>
+    </td>
+  <% if i==2 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@polygraphies, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

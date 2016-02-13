@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title><%= h(yield(:title)) || "" +'ЛЕО-Дизайн' %></title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= yield(:head) %>
+    
+  	<script type="text/javascript">
+  	  var _gaq = _gaq || [];
+  	  _gaq.push(['_setAccount', 'UA-18002774-1']);
+  	  _gaq.push(['_setDomainName', 'none']);
+  	  _gaq.push(['_setAllowLinker', true]);
+  	  _gaq.push(['_trackPageview']);
+
+  	  (function() {
+  	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  	  })();
+  	</script>
+
+    <script type="text/javascript" charset="utf-8">
+        window.onload = function () {
+            var container = $('div.sliderGallery');
+            var ul = $('ul', container);
+          
+            var itemsWidth = ul.innerWidth() - container.outerWidth();
+          
+            $('.slider', container).slider({
+                min: 0,
+                max: itemsWidth,
+                handle: '.handle',
+                stop: function (event, ui) {
+                    ul.animate({'left' : ui.value * -1}, 500);
+                },
+                slide: function (event, ui) {
+                    ul.css('left', ui.value * -1);
+                }
+            });
+        };
+    </script>
+
+  	<script>
+  		function showhide()
+  		{
+  		    el = document.getElementById("order");
+  		    if (el)
+  		    {
+  		        if (el.style.display == "block")
+  		            el.style.display="none";
+  		        else
+  		            el.style.display="block";
+  		    }
+  		}
+  	</script>
+  </head>
+
+  <body>
+  	<div id="container">
+		  <div id="header">
+		    <a href="/" style="height: 100%; width: 800px; display: block;"></a>
+		    <div style="position: absolute; top:0; right: 0; padding: 20px 0 20px 20px; z-index: 2;">
+		      <%#= render :partial => "layouts/order_call" %>
+		    </div>
+		  </div>
+	
+   	  <div id="top_nav">
+		    <ul>
+		      <li><%= link_to 'На главную', root_path %></li> 
+  			  <li><%= link_to 'Отзывы', page_path(11) %></li> 
+  			  <li id="shift"><%= link_to 'Прайсы', prices_path %></li>
+  			  <li><%= link_to 'Контакты', contacts_path %></li> 
+  			</ul>
+		  </div>
+    		<div id="middle">
+		  		<table>
+  					<tr>
+				      <td id="menu">					
+    						<div id="user_status">
+  		       	    <% if current_user %>
+  				          <%= link_to "Выход", logout_path %>
+  				        <% end %>
+  					  	</div>
+    						<%= render_navigation %>
+    						<br />
+    						<form method=get action='/search'>
+    							Поиск по сайту:
+    							<input type=text name=q size=20> 
+    							<input type=submit value='найти'>
+    						</form>
+					
+    						<%#= render :partial => "orders/form" %>
+          
+    						<br/>
+					
+    						<div style="text-align: center;" >
+    						  <%= link_to (image_tag "cert_sm.jpg")+raw('<br/>Подарочный сертификат'), asset_path("cert.jpg"), :rel=>'cert', :class=>'cert' %><br/><br/>
+    						  <script>
+      						  $(document).ready(function() {
+      						    $('a.cert').colorbox({rel:'cert'});
+      						  });
+    						  </script>
+					  
+    						  <%= link_to (image_tag "stend_katalog_cover_20113_s.jpg")+raw('<br/>Заказать бесплатный каталог'), catalogs_path %><br/>
+    						</div>
+  					  </td>
+  
+  			      <td id="content">
+  						  <%- flash.each do |name, msg| -%>
+  					      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  					    <%- end -%>
+				    
+		            <%- if show_title? -%>
+		              <h1><%= yield(:title) %></h1>
+		            <%- end -%>
+
+		            <div><%= yield %></div>
+		          </td>
+				    </tr>
+				  </table>
+			</div>
+			
+  		<div id="footer">
+        <%= image_tag "slogan.jpg" %><br />
+  			<div id="footer-table">
+  			  <table>
+  				<tr>
+  		      <td valign="top" style="width: 200px;">
+  		        <strong><%= link_to 'Информационные стенды', stand_path %></strong><br />
+  		        <%= link_to 'Стенды для детских садов', standchildrens_path %><br />
+  		        <%= link_to 'Наклейки на шкафчики', standstickers_path %><br />
+  		        <%= link_to 'Стенды для школ', standschools_path %><br />
+  		        <%= link_to 'Дополнительное образование', standdous_path %><br />
+  		        <%= link_to 'Детские лагеря', standlagers_path %><br />
+  		      </td>
+  		      <td valign="top" style="width: 200px;">			
+  		        <%= link_to 'Тематические планшеты', standthematics_path %><br />
+  		        <%= link_to 'Профилактика и безопасность', standsafeties_path %><br />
+  		        <%= link_to 'Профессиональные учебные заведения', standprofs_path %><br />
+  		        <%= link_to 'Стенды для предприятий', standpreds_path %><br />
+  		        <%= link_to 'Дополнительная продукция', standadditionals_path %><br />
+  		      </td>
+  		      <td valign="top" style="width: 200px;">
+  				    <strong><%= link_to 'Дополнительные услуги', dopballoon_path %></strong><br />
+  		        <%= link_to 'Оформление шарами', dopballoon_path %><br />
+  		        <%= link_to 'Оборудование для кабинетов образовательных учреждений', dopequipment_path %><br />
+  		        <%= link_to 'Спортинвентарь', dopsport_path %><br />
+  		        <%= link_to 'Световое оборудование', lights_path %><br />
+            </td>	
+            <td valign="top" style="width: 200px;">
+              <strong><%= link_to 'Выставочное оборудование', expos_path %></strong><br />
+              <%= link_to 'Широкоформатная печать', print_path %><br />
+              <strong><%= link_to 'Сувенирная продукция', souvenirs_path %></strong><br />
+              <%= link_to 'Наградная продукция', awards_path %><br />
+             	<strong><%= link_to 'Полиграфия', polygraphies_path %></strong><br />
+  				    <strong><%= link_to 'Прайс-листы', prices_path %></strong><br />
+  				    <strong><%= link_to 'Контакты', contacts_path %></strong><br />
+    				</tr>
+  			  </table>
+				
+  			г. Екатеринбург,  Чернышевского, 1 <br />
+  			тел.: (343) 376-34-70, 376-49-96, e-mail: <a href="mailto:a1214@list.ru">a1214@list.ru</a><br />
+  			© <a href="http://www.mediakrug.ru/" target="_blank">Издательский дом "Медиа круг"</a>. Все права защищены.<br />
+					
+  				<!-- Rating@Mail.ru counter -->
+  				<script type="text/javascript">//<![CDATA[
+  				var a='';js=10;d=document;
+  				try{a+=';r='+escape(d.referrer);}catch(e){}try{a+=';j='+navigator.javaEnabled();js=11;}catch(e){}
+  				try{s=screen;a+=';s='+s.width+'*'+s.height;a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth);js=12;}catch(e){}
+  				try{if(typeof((new Array).push('t'))==="number")js=13;}catch(e){}
+  				try{d.write('<a href="http://top.mail.ru/jump?from=1947174"><img src="http://d6.cb.bd.a1.top.mail.ru/counter?id=1947174;t=231;js='+js+
+  				a+';rand='+Math.random()+'" alt="Рейтинг@Mail.ru" style="border:0;" height="31" width="88" \/><\/a>');}catch(e){}//]]></script>
+  				<noscript><p><a href="http://top.mail.ru/jump?from=1947174"><img src="http://d6.cb.bd.a1.top.mail.ru/counter?js=na;id=1947174;t=231" 
+  				style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru" /></a></p></noscript>
+  				<!-- //Rating@Mail.ru counter -->
+  			</div>
+  		</div>
+  	</div>
+  </body>
+</html>

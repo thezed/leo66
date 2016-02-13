@@ -1,0 +1,7 @@
+<% title "Редактировать заказ" %>
+	<% if can? :edit, @pages %>
+	<%= render :partial => "/orders/form" %>
+
+	<%= link_to 'Просмотр', @order %> |
+	<%= link_to 'Назад', orders_path %>
+<% end %>

@@ -1,0 +1,525 @@
+html {
+	height: auto;
+}
+body { 
+	background-color: #fff; 
+	color: #333; 
+	background-position: 0px 0px;
+	background-repeat: repeat-y;
+}
+
+body, p, ol, ul, td {
+  font-family: helvetica, arial, verdana, sans-serif;
+  font-size:   14px;
+  line-height: 18px;
+  margin: 0px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #888; text-decoration: none;}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+img { border:none;} 
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+h1 {
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0px 0px 15px 0px;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: 1.5em;
+	margin: 20px 0px 0px 0px;
+}
+
+h3 {
+	font-weight: bold;
+	font-size: 1.17em;
+	margin: 20px 0px 0px 0px;
+}
+
+#container {
+	background-image: image-url('header4.jpg') !important;
+	background-repeat: no-repeat;
+	width: 990px;
+	margin: 0px auto;
+	position: relative;
+	height: auto;
+	min-height: 600px;
+}
+
+#header {
+	background-position: right top;
+	margin-left: auto;
+	margin-right: 0px;
+	height: 135px;
+	background-repeat: no-repeat;
+}
+
+.ent-shd {
+	background-image: image-url('shade-side.png');
+	background-position: 0px 0px;
+	background-repeat: repeat-y;
+	padding: 0px 0px 0px 200px;
+}
+
+.ent-shd2 {
+	background-image: image-url('shade-side.png');
+	background-position: 100% 0px;
+	background-repeat: repeat-y;
+	padding: 0px 200px 0px 0px;
+}
+
+#top_nav {
+	text-align: left;
+	height: 30px;
+	display: block;
+	width:780px;
+	margin: 5px auto 5px auto;
+	
+}
+
+#top_nav ul {
+	list-style:none;
+	margin:0;
+	padding:0px 0px 0px 10px;
+	
+}
+
+#top_nav li {
+	color: #01679B;
+	font-size: 14px;
+	height: 30px;
+	width: 150px;
+}
+#top_nav ul li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#top_nav a {
+	background-image: image-url('top_button.png');
+	float: left;
+	display: block;
+	margin: 0px 0px 0px 10px;
+	padding: 0px 0px 0px 35px;
+	color: #000;
+	font-size: 1em;
+	line-height: 30px;
+	width: 115px;
+	text-decoration: none;
+}
+
+#top_nav a:hover {
+	color: #000;
+}
+
+#shift a {
+	margin-left: 120px;
+}
+
+#menu {
+	width: 190px;
+	padding-right: 10px;
+}
+
+#menu ul {
+	list-style: none;
+	margin-left: 0em;
+	padding-left: 0em;
+}
+
+#menu li {
+	margin-top: 0px;
+}
+
+#menu a {
+	font-size: 14px;
+	color: #000;
+	text-decoration: none;	
+}
+
+#menu a:hover {
+	color: #0896C2;
+	text-decoration: none;
+}
+
+li.selected ul {
+	list-style: none !important; 
+	margin-left: 0em !important;
+	padding-left: 0em !important;	
+}
+
+#main {
+	line-height: 14px;
+	margin-bottom: 5px;
+}
+
+#main a {
+	background-image: image-url('main_unselected.jpg');
+	background-repeat: no-repeat;
+	display: block;
+	padding-top: 8px;
+	padding-left: 26px;
+	padding-right: 25px;
+	color: #fff;
+	height: 36px;
+}
+
+#main.selected a {
+	background-image: image-url('main_selected.jpg');
+	background-repeat: no-repeat;
+}
+
+#main a:hover {
+	background-image: image-url('main_selected.jpg');
+	background-repeat: no-repeat;
+	color: #fff;
+}
+
+#main ul {
+	background-image: image-url('ul_inf_top.jpg'), image-url('ul_inf_bottom.jpg'), image-url('ul_inf_mid_repeat.jpg') !important;
+	background-repeat: no-repeat, no-repeat, repeat-y !important;
+	background-position: top left, bottom left, top left;
+	padding-bottom: 15px;
+}
+
+#newyear a {
+	background-image: url('menu_newyear.jpg');
+	background-repeat: no-repeat;
+	font-size: 14px;
+	font-weight: bold;
+	display: block;
+	padding-left: 15px;
+	color: #fff;
+	line-height: 39px;
+}
+
+#newyear a:hover {
+	color: #f00;
+}
+
+#child li {
+	background-image: image-url('ul_inf_mid_repeat.jpg') !important;
+	background-repeat: repeat-x;
+}
+
+#child a {
+	background-image: none !important;
+	height: none !important;
+	display: block;
+	padding-left: 28px;
+	padding-bottom: 5px;
+	color: #000;
+	height: auto !important;
+}
+
+#child a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+
+#child.selected a{
+	
+}
+
+#footer {
+	background: #fff;
+	/*margin: 10px 0px 0px 0px;*/
+	padding: 10px 10px 0px 200px;
+    bottom: 0px;
+	font-size: 12px;
+}
+
+#footer-table {
+	background: #eee;
+	/*margin: 10px 0px 0px 0px;*/
+	font-size: 12px;
+}
+
+#footer-table a {
+	/*margin: 10px 0px 0px 0px;*/
+	font-size: 12px;
+	color: #666;
+}
+
+#flash_notice {
+	color: green;
+}
+
+#flash_error {
+	color: red;
+}
+
+#author {
+	font-style: italic;
+}
+
+#middle {
+	min-height: 500px;
+	background: white;
+	padding-top: 10px;
+}
+
+#middle td {
+	vertical-align: top;
+}
+
+#content {
+	padding-top: 10px;
+}
+
+#table_line {
+	border: 1px solid black;
+}
+
+#table_line:hover {
+	background: #ddd;
+}
+
+#showpic {
+	width: 500px;
+	text-align: center;
+	/*vertical-align: middle !important;*/
+}
+
+#imagecell {
+	width: 150px;
+	height: 150px;
+	text-align: center;
+	vertical-align: middle !important;
+	padding: 15px;
+}
+
+#imagecell:hover {
+  outline: 1px solid #555;
+}
+
+.pagination {
+	text-align: center;
+}
+
+/* Yandex Search */
+.ya-refblock {
+	display: none;
+}
+
+.ya-title {
+	padding-top: 10px;
+}
+
+.ya-info {
+	display: none;
+}
+
+.ya-copyright {
+	padding-top: 10px;
+	text-align: right;
+}
+
+#imagecell a {
+  text-decoration: none;
+}
+
+.price_button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #f29c93;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f29c93;
+	box-shadow:inset 0px 1px 0px 0px #f29c93;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fe1a00), color-stop(1, #ce0100) );
+	background:-moz-linear-gradient( center top, #fe1a00 5%, #ce0100 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe1a00', endColorstr='#ce0100');
+	background-color:#fe1a00;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #d83526;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:4px 6px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #b23e35;
+}.price_button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ce0100), color-stop(1, #fe1a00) );
+	background:-moz-linear-gradient( center top, #ce0100 5%, #fe1a00 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00');
+	background-color:#ce0100;
+	color:#fff;
+}.price_button:active {
+	color:#fff;
+	position:relative;
+	top:1px;
+}.price_button:visited {
+	color:#fff;
+	position:relative;
+	top:1px;
+}
+
+/**************/
+/* AJAX Stuff */
+/**************/
+
+.sliderGallery {
+    overflow: hidden;
+    position: relative;
+    padding: 10px;
+    height: 180px;
+    width: 700px;
+}
+
+.sliderGallery UL {
+    position: absolute;
+    list-style: none;
+    overflow: none;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+}
+
+.sliderGallery UL LI {
+    display: inline;
+}
+
+.slider {
+    width: 542px;
+    height: 17px;
+    margin-top: 160px;
+    margin-left: 80px;
+    padding: 1px;
+    position: relative;
+    background: image-url('productbrowser_scrollbar.png') no-repeat;
+}
+
+.handle {
+    position: absolute;
+    cursor: move;
+    height: 17px;
+    width: 181px;
+    top: 0;
+    background: image-url('productbrowser_scroller.png') no-repeat;
+    z-index: 100;
+}
+
+.slider span {
+    color: #bbb;
+    font-size: 80%;
+    cursor: pointer;
+    position: absolute;
+    z-index: 110;
+    top: 3px;
+}
+
+.slider .slider-lbl1 {
+    left: 50px;
+}
+
+.slider .slider-lbl2 {
+    left: 107px;
+}
+
+.slider .slider-lbl3 {
+    left: 156px;
+}
+
+.slider .slider-lbl4 {
+    left: 280px;
+}
+
+.slider .slider-lbl5 {
+    left: 455px;
+}
+
+/*
+    ColorBox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none;}
+.cboxIframe{width:100%; height:100%; display:block; border:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box;}
+
+/* 
+    User Style:
+    Change the following styles to modify the appearance of ColorBox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#cboxOverlay{background:#fff;}
+#colorbox{}
+    #cboxContent{margin-top:32px; overflow:visible;}
+        .cboxIframe{background:#fff;}
+        #cboxError{padding:50px; border:1px solid #ccc;}
+        #cboxLoadedContent{background:#000; padding:1px;}
+        #cboxLoadingGraphic{background: image-url('loading.gif') no-repeat center center;}
+        #cboxLoadingOverlay{background:#000;}
+        #cboxTitle{position:absolute; top:-22px; left:0; color:#000;}
+        #cboxCurrent{position:absolute; top:-22px; right:205px; text-indent:-9999px;}
+        #cboxSlideshow, #cboxPrevious, #cboxNext, #cboxClose{text-indent:-9999px; width:20px; height:20px; position:absolute; top:-20px; background: image-url('controls.png') no-repeat 0 0;}
+        #cboxPrevious{background-position:0px 0px; right:44px;}
+        #cboxPrevious:hover{background-position:0px -25px;}
+        #cboxNext{background-position:-25px 0px; right:22px;}
+        #cboxNext:hover{background-position:-25px -25px;}
+        #cboxClose{background-position:-50px 0px; right:0;}
+        #cboxClose:hover{background-position:-50px -25px;}
+        .cboxSlideshow_on #cboxPrevious, .cboxSlideshow_off #cboxPrevious{right:66px;}
+        .cboxSlideshow_on #cboxSlideshow{background-position:-75px -25px; right:44px;}
+        .cboxSlideshow_on #cboxSlideshow:hover{background-position:-100px -25px;}
+        .cboxSlideshow_off #cboxSlideshow{background-position:-100px 0px; right:44px;}
+        .cboxSlideshow_off #cboxSlideshow:hover{background-position:-75px -25px;}

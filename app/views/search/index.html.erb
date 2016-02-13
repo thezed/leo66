@@ -1,0 +1,16 @@
+<% title "Поиск по сайту" %>
+
+<form method=get action='/search'>
+
+	<input type=text name=q size=50> 
+	<input type=submit value='найти'>
+</form>
+
+<br />
+
+<% if params[:q] %>
+	<% yandex_search = Net::HTTP.get_response( URI.parse( "http://yandex-server-1.1gb.ru/ya.cgi/leo66search?q=" + CGI::escape(params[:q]) )).body %>
+
+	<%= yandex_search %>
+
+<% end %>

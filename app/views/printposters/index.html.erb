@@ -1,0 +1,58 @@
+<% title "Постеры" %>
+
+<%= will_paginate(@printposters, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @printposters %>
+	<%= link_to 'Добавить запись', new_printposter_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @printposters.each do |printposter| %>
+  <tr>
+	<td><%= link_to image_tag(printposter.image.url(:small)), printposter %></td>
+    <td><%= printposter.artikul %></td>
+    <td><%= printposter.name %></td>
+    <td><%= printposter.price %></td>
+    <td><%= printposter.size %></td>
+    <td><%= printposter.format %></td>
+    <td><%= printposter.additional %></td>
+    <% if can? :create, @printposters %>
+		<td><%= link_to 'Редактировать', edit_printposter_path(printposter) %>
+	    <%= link_to 'Удалить', printposter, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @printposters.each do |printposter| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= link_to image_tag(printposter.image.url(:medium)), printposter %><br />
+		  <%= link_to printposter.artikul+' '+printposter.name, printposter %><br />
+	    <%= link_to "Узнать цену", printposter, :class => "price_button" %>
+    </td>
+  <% if i==4 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@printposters, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

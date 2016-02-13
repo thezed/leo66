@@ -1,0 +1,60 @@
+<% title "Выставочная продукция" %>
+
+<%#= link_to 'Прайс — '+Price.find(10).name, Price.find(10).pricefile.url %>
+<%#= link_to 'Прайс — '+Price.find(13).name, Price.find(13).pricefile.url %>
+
+<%= will_paginate(@expos, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @expos %>
+	<%= link_to 'Добавить запись', new_expo_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @expos.each do |expo| %>
+  <tr>
+	<td><%= link_to image_tag(expo.image.url(:small)), expo %></td>
+    <td><%= expo.artikul %></td>
+    <td><%= expo.name %></td>
+    <td><%= expo.price %></td>
+    <td><%= expo.size %></td>
+    <td><%= expo.format %></td>
+    <td><%= expo.additional %></td>
+    <% if can? :create, @expos %>
+		<td><%= link_to 'Редактировать', edit_expo_path(expo) %>
+	    <%= link_to 'Удалить', expo, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @expos.each do |expo| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= image_tag(expo.image.url(:big300)) %><br />
+		  <%= expo.name %>
+    </td>
+  <% if i==2 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@expos, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

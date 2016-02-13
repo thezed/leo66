@@ -1,0 +1,58 @@
+<% title "Профессиональные учебные заведения" %>
+
+<%= will_paginate(@standprofs, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @standprofs %>
+	<%= link_to 'Добавить запись', new_standprof_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @standprofs.each do |standprof| %>
+  <tr>
+	<td><%= link_to image_tag(standprof.image.url(:small)), standprof %></td>
+    <td><%= standprof.artikul %></td>
+    <td><%= standprof.name %></td>
+    <td><%= standprof.price %></td>
+    <td><%= standprof.size %></td>
+    <td><%= standprof.format %></td>
+    <td><%= standprof.additional %></td>
+    <% if can? :create, @standprofs %>
+		<td><%= link_to 'Редактировать', edit_standprof_path(standprof) %>
+	    <%= link_to 'Удалить', standprof, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @standprofs.each do |standprof| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= link_to image_tag(standprof.image.url(:medium), :alt => "Стенды для профессиональных учебных заведений", :title => "Стенды для профессиональных учебных заведений"), standprof %><br />
+		  <%= link_to standprof.artikul+' '+standprof.name, standprof %><br />
+	    <%= link_to "Узнать цену", standprof, :class => "price_button" %>
+    </td>
+  <% if i==4 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@standprofs, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

@@ -1,0 +1,58 @@
+<% title "Наклейки на шкафчики" %>
+
+<%= will_paginate(@standstickers, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @standstickers %>
+	<%= link_to 'Добавить запись', new_standsticker_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @standstickers.each do |standsticker| %>
+  <tr>
+	<td><%= link_to image_tag(standsticker.image.url(:small)), standsticker %></td>
+    <td><%= standsticker.artikul %></td>
+    <td><%= standsticker.name %></td>
+    <td><%= standsticker.price %></td>
+    <td><%= standsticker.size %></td>
+    <td><%= standsticker.format %></td>
+    <td><%= standsticker.additional %></td>
+    <% if can? :create, @standstickers %>
+		<td><%= link_to 'Редактировать', edit_standsticker_path(standsticker) %>
+	    <%= link_to 'Удалить', standsticker, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @standstickers.each do |standsticker| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= link_to image_tag(standsticker.image.url(:medium), :alt => "Стенды и наклейки на шкафчики", :title => "Стенды и наклейки на шкафчики"), standsticker %><br />
+	  <%= link_to standsticker.artikul+' '+standsticker.name, standsticker %><br />
+    <%= link_to "Узнать цену", standsticker, :class => "price_button" %>
+    </td>
+  <% if i==4 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@standstickers, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

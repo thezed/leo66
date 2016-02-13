@@ -1,0 +1,67 @@
+<% title "Сувенирная продукция" %>
+
+<%#= link_to 'Прайс — '+Price.find(1).name, Price.find(1).pricefile.url %>
+<%#= link_to 'Прайс — '+Price.find(9).name, Price.find(9).pricefile.url %>
+<%#= link_to 'Прайс — '+Price.find(2).name, Price.find(2).pricefile.url %>
+<%#= link_to 'Прайс — '+Price.find(3).name, Price.find(3).pricefile.url %>
+<%#= link_to 'Прайс — '+Price.find(4).name, Price.find(4).pricefile.url %>
+<%#= link_to 'Прайс — '+Price.find(5).name, Price.find(5).pricefile.url %>
+<%#= link_to 'Прайс — '+Price.find(8).name, Price.find(8).pricefile.url %>
+<%#= link_to 'Прайс — '+Price.find(11).name, Price.find(11).pricefile.url %>
+<%#= link_to 'Прайс — '+Price.find(13).name, Price.find(13).pricefile.url %>
+
+<%= will_paginate(@souvenirs, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @souvenirs %>
+	<%= link_to 'Добавить запись', new_souvenir_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @souvenirs.each do |souvenir| %>
+  <tr>
+	<td><%= link_to image_tag(souvenir.image.url(:small)), souvenir %></td>
+    <td><%= souvenir.artikul %></td>
+    <td><%= souvenir.name %></td>
+    <td><%= souvenir.price %></td>
+    <td><%= souvenir.size %></td>
+    <td><%= souvenir.format %></td>
+    <td><%= souvenir.additional %></td>
+    <% if can? :create, @souvenirs %>
+		<td><%= link_to 'Редактировать', edit_souvenir_path(souvenir) %>
+	    <%= link_to 'Удалить', souvenir, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @souvenirs.each do |souvenir| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= image_tag(souvenir.image.url(:big300)) %><br />
+		  <%= souvenir.name %>
+    </td>
+  <% if i==2 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@souvenirs, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

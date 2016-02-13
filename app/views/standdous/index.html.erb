@@ -1,0 +1,58 @@
+<% title "Дополнительное образование" %>
+
+<%= will_paginate(@standdous, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @standdous %>
+	<%= link_to 'Добавить запись', new_standdou_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @standdous.each do |standdou| %>  
+<tr>
+	<td><%= link_to image_tag(standdou.image.url(:small)), standdou %></td>
+    <td><%= standdou.artikul %></td>
+    <td><%= standdou.name %></td>
+    <td><%= standdou.price %></td>
+    <td><%= standdou.size %></td>
+    <td><%= standdou.format %></td>
+    <td><%= standdou.additional %></td>
+    <% if can? :create, @standdous %>
+		<td><%= link_to 'Редактировать', edit_standdou_path(standdou) %>
+	    <%= link_to 'Удалить', standdou, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @standdous.each do |standdou| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= link_to image_tag(standdou.image.url(:medium), :alt => "Стенды для дополнительных образованых учреждений", :title => "Стенды для дополнительных образованых учреждений"), standdou %><br />
+		  <%= link_to standdou.artikul+' '+standdou.name, standdou %><br />
+	    <%= link_to "Узнать цену", standdou, :class => "price_button" %>
+    </td>
+  <% if i==4 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@standdous, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

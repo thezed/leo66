@@ -1,0 +1,57 @@
+<% title "Новогодняя продукция" %>
+
+<%= will_paginate(@printwallpapers, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @printwallpapers %>
+	<%= link_to 'Добавить запись', new_printwallpaper_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @printwallpapers.each do |printwallpaper| %>
+  <tr>
+	<td><%= link_to image_tag(printwallpaper.image.url(:small)), printwallpaper %></td>
+    <td><%= printwallpaper.artikul %></td>
+    <td><%= printwallpaper.name %></td>
+    <td><%= printwallpaper.price %></td>
+    <td><%= printwallpaper.size %></td>
+    <td><%= printwallpaper.format %></td>
+    <td><%= printwallpaper.additional %></td>
+    <% if can? :create, @printwallpapers %>
+		<td><%= link_to 'Редактировать', edit_printwallpaper_path(printwallpaper) %>
+	    <%= link_to 'Удалить', printwallpaper, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @printwallpapers.each do |printwallpaper| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+	  <%= printwallpaper.name %><br />
+      <%= image_tag(printwallpaper.image.url(:big300)) %>
+    </td>
+  <% if i==2 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@printwallpapers, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

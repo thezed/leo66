@@ -1,0 +1,61 @@
+<% title "Сувенирная продукция" %>
+
+<table>
+<tr>
+<td id='showpic'>
+<%= image_tag @souvenir.image.url(:big) %>
+
+</td>
+<td style="vertical-align: middle !important;">
+
+<p><b><%= @souvenir.name %></b></p>
+
+<p>
+  <b>Артикул:</b>
+  <%= @souvenir.artikul %>
+</p>
+
+<p>
+  <b>Цена:</b>
+  <%= @souvenir.price %> руб.
+</p>
+
+<p>
+  <b>Размер:</b>
+  <%= @souvenir.size %>
+</p>
+
+<p>
+  <b>Формат карманов:</b>
+  <%= @souvenir.format %>
+</p>
+
+<p>
+  <b>Дополнительно:</b>
+  <%= @souvenir.additional %>
+</p>
+
+<%= render :partial => "orders/form" %>
+
+</td>
+</tr>
+</table>
+
+<br />
+<br />
+<b>Другие товары:</b>
+<div class="sliderGallery">
+    <ul>
+	  <% @thumbs.each do |thumb| %>
+		<li><%= link_to image_tag(thumb.image.url(:medium)), thumb %></li>
+      <% end %>
+    </ul>        	
+	<div class="slider ui-slider">
+        <a href="javascript:void(0)" style="outline: medium none; border: medium none;"><div style="left: 0pt;" class="handle ui-slider-handle-active"></div></a>
+    </div>
+</div>
+
+<% if can? :create, @awards %>
+	<%= link_to 'Редактировать', edit_souvenir_path(@souvenir) %> |
+<% end %>
+<%= link_to 'Назад', souvenirs_path %>

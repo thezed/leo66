@@ -1,0 +1,24 @@
+<% title "Прайсы" %>
+
+<% if can? :create, @prices %>
+	<%= link_to 'Добавить прайс', new_price_path %>
+	<br />
+	<br />
+<% end %>
+
+<% @prices.each do |price| %>
+
+	<% if can? :create, @prices %>
+		<%= price.order %>
+	<% end %>
+	
+	<%= link_to price.name, price.pricefile.url %>
+	
+	<% if can? :create, @prices %>
+		<%= link_to 'Редактировать', edit_price_path(price) %>
+		<%= link_to 'Удалить', price, :confirm => 'Вы уверены?', :method => :delete %>
+	<% end %>
+	
+	<%=simple_format price.text %>
+
+<% end %>

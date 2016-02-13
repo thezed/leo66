@@ -1,0 +1,42 @@
+<% title "Добавить запись" %>
+
+<%= form_for @printplacard, :html => { :multipart => true } do |f| %>
+  <%#= f.error_messages %>
+
+  <p>
+    Артикул<br />
+    <%= f.text_field :artikul %>
+  </p>
+  <p>
+    Название<br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    Цена<br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    Размер<br />
+    <%= f.text_field :size %>
+  </p>
+  <p>
+    Формат<br />
+    <%= f.text_field :format %>
+  </p>
+  <p>
+    Количество<br />
+    <%= f.text_field :quantity %>
+  </p>
+  <p>
+    Дополнительно<br />
+    <%= f.text_field :additional %>
+  </p>
+  <p>Изображение
+    <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.submit 'Отправить' %>
+  </p>
+<% end %>
+
+<%= link_to 'Назад', printplacards_path %>

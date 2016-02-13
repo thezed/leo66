@@ -1,0 +1,58 @@
+<% title "Часы" %>
+
+<%= will_paginate(@awards, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @awards %>
+	<%= link_to 'Добавить запись', new_award_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Цена</th>
+    <th>Цена с фигурной резкой</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @awards.each do |award| %>
+  <tr>
+	<td><%= link_to image_tag(award.image.url(:small)), award %></td>
+    <td><%= award.artikul %></td>
+    <td><%= award.price %></td>
+    <td><%= award.pricefigure %></td>
+    <td><%= award.size %></td>
+    <td><%= award.format %></td>
+    <td><%= award.additional %></td>
+    <% if can? :create, @awards %>
+		<td><%= link_to 'Редактировать', edit_award_path(award) %>
+	    <%= link_to 'Удалить', award, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @awards.each do |award| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= link_to image_tag(award.image.url(:medium)), award %><br />
+		  <%= link_to award.artikul+' '+award.name, award %><br />
+	    <%= link_to "Узнать цену", award, :class => "price_button" %>
+    </td>
+  <% if i==4 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@awards, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

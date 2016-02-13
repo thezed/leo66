@@ -1,0 +1,20 @@
+<% if can? :edit, @pages %>
+	<h1>Заказы</h1>
+
+	<% @orders.each do |order| %>
+	<p>
+	  <b>Артикул:</b> <%= order.artikul %><br />
+	  <b>Имя:</b> <%= order.name %><br />
+	  <b>Организация:</b> <%= order.name_com %><br />
+	  <b>Телефон:</b> <%= order.phone %><br />
+	  <b>Email:</b> <%= order.email %><br />
+	  <%= link_to 'Просмотр', order %>
+	  <%= link_to 'Редактировать', edit_order_path(order) %>
+	  <%= link_to 'Удалить', order, :confirm => 'Вы уверены?', :method => :delete %>
+	</p><br />
+	<% end %>
+
+	<br />
+
+	<%= link_to 'Новый заказ', new_order_path %>
+<% end %>

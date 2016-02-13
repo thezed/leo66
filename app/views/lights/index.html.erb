@@ -1,0 +1,57 @@
+<% title "Световое оборудование" %>
+
+<%= will_paginate(@lights, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @lights %>
+	<%= link_to 'Добавить запись', new_light_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @lights.each do |light| %>  
+<tr>
+	<td><%= link_to image_tag(light.image.url(:small)), light %></td>
+    <td><%= light.artikul %></td>
+    <td><%= light.name %></td>
+    <td><%= light.price %></td>
+    <td><%= light.size %></td>
+    <td><%= light.format %></td>
+    <td><%= light.additional %></td>
+    <% if can? :create, @lights %>
+		<td><%= link_to 'Редактировать', edit_light_path(light) %>
+	    <%= link_to 'Удалить', light, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @lights.each do |light| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= image_tag(light.image.url(:big)) %><br />
+		  <%= light.artikul %>
+    </td>
+  <% if i==2 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@lights, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

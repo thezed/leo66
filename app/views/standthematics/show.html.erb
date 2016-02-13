@@ -1,0 +1,61 @@
+<% title "Тематические планшеты" %>
+
+<table>
+<tr>
+<td id='showpic'>
+<%= image_tag @standthematic.image.url(:big), :alt => "Тематические планшеты и стенды", :title => "Тематические планшеты и стенды" %>
+
+</td>
+<td style="vertical-align: middle !important;">
+
+<p><b><%= @standthematic.name %></b></p>
+
+<p>
+  <b>Артикул:</b>
+  <%= @standthematic.artikul %>
+</p>
+
+<p>
+  <b>Цена:</b>
+  <%= @standthematic.price %> руб.
+</p>
+
+<p>
+  <b>Размер:</b>
+  <%= @standthematic.size %>
+</p>
+
+<p>
+  <b>Формат карманов:</b>
+  <%= @standthematic.format %>
+</p>
+
+<p>
+  <b>Дополнительно:</b>
+  <%= @standthematic.additional %>
+</p>
+
+<%= render :partial => "orders/form" %>
+
+</td>
+</tr>
+</table>
+
+<br />
+<br />
+<b>Другие товары:</b>
+<div class="sliderGallery">
+    <ul>
+	  <% @thumbs.each do |thumb| %>
+		<li><%= link_to image_tag(thumb.image.url(:medium)), thumb %></li>
+      <% end %>
+    </ul>        	
+	<div class="slider ui-slider">
+        <a href="javascript:void(0)" style="outline: medium none; border: medium none;"><div style="left: 0pt;" class="handle ui-slider-handle-active"></div></a>
+    </div>
+</div>
+
+<% if can? :create, @awards %>
+	<%= link_to 'Редактировать', edit_standthematic_path(@standthematic) %> |
+<% end %>
+<%= link_to 'Назад', standthematics_path %>

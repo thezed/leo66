@@ -1,0 +1,58 @@
+<% title "Предприятия" %>
+
+<%= will_paginate(@standpreds, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @standpreds %>
+	<%= link_to 'Добавить запись', new_standpred_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @standpreds.each do |standpred| %>
+  <tr>
+	<td><%= link_to image_tag(standpred.image.url(:small)), standpred %></td>
+    <td><%= standpred.artikul %></td>
+    <td><%= standpred.name %></td>
+    <td><%= standpred.price %></td>
+    <td><%= standpred.size %></td>
+    <td><%= standpred.format %></td>
+    <td><%= standpred.additional %></td>
+    <% if can? :create, @standpreds %>
+		<td><%= link_to 'Редактировать', edit_standpred_path(standpred) %>
+	    <%= link_to 'Удалить', standpred, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @standpreds.each do |standpred| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= link_to image_tag(standpred.image.url(:medium), :alt => "Стенды для предприятий", :title => "Стенды для предприятий"), standpred %><br />
+		  <%= link_to standpred.artikul+' '+standpred.name, standpred %><br />
+	    <%= link_to "Узнать цену", standpred, :class => "price_button" %>
+    </td>
+  <% if i==4 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@standpreds, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

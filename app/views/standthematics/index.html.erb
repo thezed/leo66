@@ -1,0 +1,58 @@
+<% title "Тематические планшеты" %>
+
+<%= will_paginate(@standthematics, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, @standthematics %>
+	<%= link_to 'Добавить запись', new_standthematic_path %>
+	<br />
+
+
+<table>
+  <tr>
+	<th>Картинка</th>
+    <th>Артикул</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Размер</th>
+    <th>Формат карманов</th>
+    <th>Дополнительно</th>
+  </tr>
+
+<% @standthematics.each do |standthematic| %>
+  <tr>
+	<td><%= link_to image_tag(standthematic.image.url(:small)), standthematic %></td>
+    <td><%= standthematic.artikul %></td>
+    <td><%= standthematic.name %></td>
+    <td><%= standthematic.price %></td>
+    <td><%= standthematic.size %></td>
+    <td><%= standthematic.format %></td>
+    <td><%= standthematic.additional %></td>
+    <% if can? :create, @standthematics %>
+		<td><%= link_to 'Редактировать', edit_standthematic_path(standthematic) %>
+	    <%= link_to 'Удалить', standthematic, :confirm => 'Вы уверены?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<% i=1 %>
+<table>
+<% @standthematics.each do |standthematic| %>
+  <% if i==1 %>
+	<tr>
+  <% end %>
+    <td id="imagecell"> 
+      <%= link_to image_tag(standthematic.image.url(:medium), :alt => "Тематические планшеты и стенды", :title => "Тематические планшеты и стенды"), standthematic %><br />
+  	  <%= link_to standthematic.artikul+' '+standthematic.name, standthematic %>
+	    <%= link_to "Узнать цену", standthematic, :class => "price_button" %>
+    </td>
+  <% if i==4 %>
+	</tr>
+    <% i=0 %>
+  <% end %>
+  <% i+=1 %>
+<% end %>
+</table>
+
+<%= will_paginate(@standthematics, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
