@@ -43,6 +43,7 @@ gem "simple-navigation"
 gem "will_paginate"
 gem "pg"
 gem 'devise', :git => "https://github.com/plataformatec/devise.git", :branch => "master"
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'sqlite3'

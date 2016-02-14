@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/plataformatec/devise.git
-  revision: f17304022261cbd3e7df2e6460f20013ab78b050
+  revision: cecb3ee45b6fd53160a593d474a04e9816a04e75
   branch: master
   specs:
     devise (4.0.0.rc1)
@@ -120,6 +120,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
+    newrelic_rpm (3.14.3.313)
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -236,6 +237,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   letter_opener
+  newrelic_rpm
   paperclip
   pg
   pry-rails
