@@ -37,7 +37,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-set :nginx_server_name, 'leo66.ru www.leo66.ru'
+set :nginx_server_name, 'leo66.ru www.leo66.ru leostend.ru www.leostend.ru'
 
 namespace :deploy do
 
