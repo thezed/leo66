@@ -1,6 +1,6 @@
-<% title "Редактировать запись" %>
+<% title "Добавить запись" %>
 
-<%= form_for @standchildren, :html => { :multipart => true } do |f| %>
+<%= form_for @standchil, :html => { :multipart => true } do |f| %>
   <%#= f.error_messages %>
 
   <p>
@@ -39,5 +39,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Просмотр', @standchildren %> |
-<%= link_to 'Назад', standchildrens_path %>
+<%= link_to 'Назад', standchils_path %>

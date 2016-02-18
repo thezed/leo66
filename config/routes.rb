@@ -23,11 +23,11 @@ Rails.application.routes.draw do
     resources :standpreds, path: 'stand/pred'
     resources :standprofs, path: 'stand/prof'
     resources :standsafeties, path: 'stand/safety'
-    resources :standchildrens, path: 'stand/children'
     resources :standschools, path: 'stand/school'
     resources :standthematics, path: 'stand/thematic'
     resources :standstickers, path: 'stand/stickers'
     resources :standadditionals, path: 'stand/additional'
+    resources :standchils, path: 'stand/children'
   
   resources :souvenirs, path: 'souvenirs'
   resources :awards

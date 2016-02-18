@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211000501) do
+ActiveRecord::Schema.define(version: 20160218131901) do
 
   create_table "awards", force: :cascade do |t|
     t.string   "artikul"
@@ -195,7 +195,7 @@ ActiveRecord::Schema.define(version: 20160211000501) do
     t.string   "name"
   end
 
-  create_table "standchildrens", force: :cascade do |t|
+  create_table "standchils", force: :cascade do |t|
     t.string   "artikul"
     t.integer  "price"
     t.integer  "pricefigure"

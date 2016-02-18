@@ -4,7 +4,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #primary.item :newyear, 'Новый год', newyear_path
     
     primary.item :main, 'Информационные стенды', stand_path, :highlights_on => /\/stand/ do |stand|
-      stand.item :child, 'Стенды для детских садов', standchildrens_path, :highlights_on => /\/stand\/children/
+      stand.item :child, 'Стенды для детских садов', standchils_path, :highlights_on => /\/stand\/children/
       stand.item :child, 'Наклейки на шкафчики', standstickers_path, :highlights_on => /\/stand\/stickers/
       stand.item :child, 'Стенды для школ', standschools_path, :highlights_on => /\/stand\/school/
       stand.item :child, 'Дополнительное образование', standdous_path, :highlights_on => /\/stand\/dou/

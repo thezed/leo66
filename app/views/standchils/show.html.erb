@@ -3,36 +3,36 @@
 <table>
 <tr>
 <td id='showpic'>
-<%= image_tag @standchildren.image.url(:big), :alt => "Стенды для детских садов", :title => "Стенды для детских садов" %>
+<%= image_tag @standchil.image.url(:big), :alt => "Стенды для детских садов", :title => "Стенды для детских садов" %>
 
 </td>
 <td style="vertical-align: middle !important;">
 
-<p><b><%= @standchildren.name %></b></p>
+<p><b><%= @standchil.name %></b></p>
 
 <p>
   <b>Артикул:</b>
-  <%= @standchildren.artikul %>
+  <%= @standchil.artikul %>
 </p>
 
 <p>
   <b>Цена:</b>
-  <%= @standchildren.price %> руб.
+  <%= @standchil.price %> руб.
 </p>
 
 <p>
   <b>Размер:</b>
-  <%= @standchildren.size %>
+  <%= @standchil.size %>
 </p>
 
 <p>
   <b>Формат карманов:</b>
-  <%= @standchildren.format %>
+  <%= @standchil.format %>
 </p>
 
 <p>
   <b>Дополнительно:</b>
-  <%= @standchildren.additional %>
+  <%= @standchil.additional %>
 </p>
 
 <%= render :partial => "orders/form" %>
@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<% if can? :create, @standchildrens %>
-	<%= link_to 'Редактировать', edit_standchildren_path(@standchildren) %> |
+<% if can? :create, @standchils %>
+	<%= link_to 'Редактировать', edit_standchil_path(@standchil) %> |
 <% end %>
-<%= link_to 'Назад', standchildrens_path %>
+<%= link_to 'Назад', standchils_path %>
