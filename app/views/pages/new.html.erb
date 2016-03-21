@@ -1,4 +1,6 @@
-<% title 'Новая страница' %>
+<%= javascript_include_tag "admin/application" %>
+
+<%=raw title 'Новая страница' %>
 
 <%= form_for(@page) do |f| %>
   <%#= f.error_messages %>

@@ -3,7 +3,7 @@
   	<%= link_to 'Редактировать', edit_page_path(@page) %>
   <% end %>
 
-  <% title @page.title %>
+  <%=raw title @page.title %>
 
   <%= simple_format @page.text %>
 

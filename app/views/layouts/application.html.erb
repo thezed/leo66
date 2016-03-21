@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title><%= h(yield(:title)) || "" +'ЛЕО-Дизайн' %></title>
+    <title><%= (yield(:title) || "") +' – ЛЕО-Дизайн' %></title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 
