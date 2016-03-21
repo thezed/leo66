@@ -101,7 +101,14 @@
     						  <%= link_to (image_tag "cert_sm.jpg")+raw('<br/>Подарочный сертификат'), asset_path("cert.jpg"), :rel=>'cert', :class=>'cert' %><br/><br/>
     						  <script>
       						  $(document).ready(function() {
-      						    $('a.cert').colorbox({rel:'cert'});
+                      $("img.cert").each(function() {
+                          var $this = $(this);
+                          var src = $this.attr('src');
+                          $this.addClass('cert');
+                          var a = $('<a class="cert" rel="feedback"/>').attr('href', src);
+                          $this.wrap(a);
+                      });
+                      $('a.cert').colorbox({rel:'cert'});
       						  });
     						  </script>
 					  
