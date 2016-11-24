@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.beta2', '< 5.1'
+gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 
 # Use Puma as the app server
@@ -42,7 +42,7 @@ gem "russian"
 gem "simple-navigation"
 gem "will_paginate"
 gem "pg"
-gem 'devise', :git => "https://github.com/plataformatec/devise.git", :branch => "master"
+gem 'devise'
 gem 'ckeditor'
 # gem 'newrelic_rpm'
 
@@ -57,7 +57,6 @@ group :development do
   gem 'web-console', '~> 3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'quiet_assets'
   gem 'pry-rails'
   gem 'letter_opener'
 end
