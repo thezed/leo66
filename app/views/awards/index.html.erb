@@ -44,7 +44,7 @@
   <% end %>
     <td id="imagecell"> 
       <%= link_to image_tag(award.image.url(:medium)), award %><br />
-		  <%= link_to award.artikul+' '+award.name, award %><br />
+		  <%= link_to "#{award.artikul} #{award.name}", award %><br />
 	    <%= link_to "Узнать цену", award, :class => "price_button" %>
     </td>
   <% if i==4 %>

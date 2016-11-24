@@ -19,9 +19,9 @@
 
 <% @standschools.each do |standschool| %>
   <tr>
-	<td><%= link_to image_tag(standschool.image.url(:small)), standschool %></td>
+	  <td><%= link_to image_tag(standschool.image.url(:small)), standschool %></td>
     <td><%= standschool.artikul %></td>
-	<td><%= standschool.name %></td>
+	  <td><%= standschool.name %></td>
     <td><%= standschool.price %></td>
     <td><%= standschool.size %></td>
     <td><%= standschool.format %></td>
@@ -43,7 +43,7 @@
   <% end %>
     <td id="imagecell"> 
       <%= link_to image_tag(standschool.image.url(:medium), :alt => "Стенды для школ", :title => "Стенды для школ"), standschool %><br />
-	  <%= link_to standschool.artikul+' '+standschool.name, standschool %><br />
+	  <%= link_to "#{standschool.artikul} #{standschool.name}", standschool %><br />
     <%= link_to "Узнать цену", standschool, :class => "price_button" %>
     </td>
   <% if i==4 %>

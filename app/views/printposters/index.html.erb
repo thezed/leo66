@@ -44,7 +44,7 @@
   <% end %>
     <td id="imagecell"> 
       <%= link_to image_tag(printposter.image.url(:medium)), printposter %><br />
-		  <%= link_to printposter.artikul+' '+printposter.name, printposter %><br />
+		  <%= link_to "#{printposter.artikul} #{printposter.name}", printposter %><br />
 	    <%= link_to "Узнать цену", printposter, :class => "price_button" %>
     </td>
   <% if i==4 %>

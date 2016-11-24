@@ -44,7 +44,7 @@
   <% end %>
     <td id="imagecell"> 
       <%= link_to image_tag(standdou.image.url(:medium), :alt => "Стенды для дополнительных образованых учреждений", :title => "Стенды для дополнительных образованых учреждений"), standdou %><br />
-		  <%= link_to standdou.artikul+' '+standdou.name, standdou %><br />
+		  <%= link_to "#{standdou.artikul} #{standdou.name}", standdou %><br />
 	    <%= link_to "Узнать цену", standdou, :class => "price_button" %>
     </td>
   <% if i==4 %>
