@@ -3,7 +3,7 @@ class PrintwallpapersController < ApplicationController
   # GET /printwallpapers
   # GET /printwallpapers.xml
   def index
-    @printwallpapers = Printwallpaper.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
+    @printwallpapers = Printwallpaper.order(id: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

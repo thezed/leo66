@@ -3,7 +3,7 @@ class StandprofsController < ApplicationController
   # GET /standprofs
   # GET /standprofs.xml
   def index
-    @standprofs = Standprof.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
+    @standprofs = Standprof.order(id: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

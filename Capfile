@@ -22,5 +22,8 @@ require 'capistrano/puma/workers' # if you want to control the workers (in clust
 require 'capistrano/puma/jungle'  # if you need the jungle tasks
 require 'capistrano/puma/nginx'   # if you want to upload a nginx site template
 
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git
+
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }

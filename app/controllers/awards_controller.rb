@@ -3,7 +3,7 @@ class AwardsController < ApplicationController
   # GET /awards
   # GET /awards.xml
   def index
-    @awards = Award.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
+    @awards = Award.order(id: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

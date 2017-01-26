@@ -3,7 +3,7 @@ class StandthematicsController < ApplicationController
   # GET /standthematics
   # GET /standthematics.xml
   def index
-    @standthematics = Standthematic.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
+    @standthematics = Standthematic.order(id: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

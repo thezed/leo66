@@ -3,7 +3,7 @@ class StandlagersController < ApplicationController
   # GET /standlagers
   # GET /standlagers.xml
   def index
-    @standlagers = Standlager.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
+    @standlagers = Standlager.order(id: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb
