@@ -3,7 +3,7 @@ class StandstickersController < ApplicationController
   # GET /standstickers
   # GET /standstickers.xml
   def index
-    @standstickers = Standsticker.paginate :page => params[:page], :per_page => 24
+    @standstickers = Standsticker.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

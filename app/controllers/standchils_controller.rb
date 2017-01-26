@@ -3,7 +3,7 @@ class StandchilsController < ApplicationController
   # GET /standchils
   # GET /standchils.xml
   def index
-    @standchils = Standchil.paginate :page => params[:page], :per_page => 24
+    @standchils = Standchil.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

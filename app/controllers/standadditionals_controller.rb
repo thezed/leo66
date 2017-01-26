@@ -3,7 +3,7 @@ class StandadditionalsController < ApplicationController
   # GET /standadditionals
   # GET /standadditionals.xml
   def index
-    @standadditionals = Standadditional.paginate :page => params[:page], :per_page => 24
+    @standadditionals = Standadditional.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

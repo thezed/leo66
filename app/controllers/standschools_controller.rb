@@ -3,7 +3,7 @@ class StandschoolsController < ApplicationController
   # GET /standschools
   # GET /standschools.xml
   def index
-    @standschools = Standschool.paginate :page => params[:page], :per_page => 24
+    @standschools = Standschool.order(artikul: :asc).order(artikul: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

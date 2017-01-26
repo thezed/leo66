@@ -3,7 +3,7 @@ class SouvenirsController < ApplicationController
   # GET /souvenirs
   # GET /souvenirs.xml
   def index
-    @souvenirs = Souvenir.paginate :page => params[:page], :per_page => 24
+    @souvenirs = Souvenir.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

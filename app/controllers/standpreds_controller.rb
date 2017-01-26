@@ -3,7 +3,7 @@ class StandpredsController < ApplicationController
   # GET /standpreds
   # GET /standpreds.xml
   def index
-    @standpreds = Standpred.paginate :page => params[:page], :per_page => 24
+    @standpreds = Standpred.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

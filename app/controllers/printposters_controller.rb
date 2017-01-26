@@ -3,7 +3,7 @@ class PrintpostersController < ApplicationController
   # GET /printposters
   # GET /printposters.xml
   def index
-    @printposters = Printposter.paginate :page => params[:page], :per_page => 24
+    @printposters = Printposter.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

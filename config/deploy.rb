@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.6.1'
+lock '3.7.1'
 
 set :application, 'leo66'
 set :repo_url, 'git@bitbucket.org:thezed/leo66.git'

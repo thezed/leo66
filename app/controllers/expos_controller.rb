@@ -3,7 +3,7 @@ class ExposController < ApplicationController
   # GET /expos
   # GET /expos.xml
   def index
-    @expos = Expo.paginate :page => params[:page], :per_page => 24
+    @expos = Expo.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb

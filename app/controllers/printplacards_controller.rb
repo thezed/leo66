@@ -3,7 +3,7 @@ class PrintplacardsController < ApplicationController
   # GET /printplacards
   # GET /printplacards.xml
   def index
-    @printplacards = Printplacard.paginate :page => params[:page], :per_page => 24
+    @printplacards = Printplacard.order(artikul: :asc).paginate :page => params[:page], :per_page => 24
 
     respond_to do |format|
       format.html # index.html.erb
