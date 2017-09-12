@@ -3,7 +3,7 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     #primary.item :newyear, 'Новый год', newyear_path
     
-    primary.item :main, 'Информационные стенды', stand_path, :highlights_on => /\/stand/ do |stand|
+    primary.item :main, 'Информационные стенды', stands_path, :highlights_on => /\/stand/ do |stand|
       stand.item :child, 'Стенды для детских садов', standchils_path, :highlights_on => /\/stand\/children/
       stand.item :child, 'Наклейки на шкафчики', standstickers_path, :highlights_on => /\/stand\/stickers/
       stand.item :child, 'Стенды для школ', standschools_path, :highlights_on => /\/stand\/school/

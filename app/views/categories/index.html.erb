@@ -1,0 +1,7 @@
+<h1>Категории</h1>
+
+<p><%= link_to 'Новая категория', new_category_path %></p>
+
+<ol class='sortable_tree' data-max_levels=5 data-rebuild_url=<%= rebuild_categories_url %>>
+  <%= sortable_tree @categories, title: :name %>
+</ol>

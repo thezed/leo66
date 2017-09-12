@@ -1,0 +1,32 @@
+<h1><%= title @category.name %></h1>
+
+<p><%=raw @category.text %></p>
+
+<%= will_paginate(@stands, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
+
+<% if can? :create, Stand %>
+	<%= link_to 'Добавить стенд', new_stand_path %>
+<% end %>
+
+<% i=1 %>
+<table>
+  <% @stands.each do |stand| %>
+    <% if i==1 %>
+  	  <tr>
+    <% end %>
+    
+    <td id="imagecell"> 
+      <%= link_to image_tag(stand.image.url(:medium), :alt => stand.name, :title => stand.name), stand %><br />
+		  <%= link_to "#{stand.artikul} #{stand.name}", stand %><br />
+	    <%= link_to "Узнать цену", stand, :class => "price_button" %>
+    </td>
+    
+    <% if i==4 %>
+  	  </tr>
+      <% i=0 %>
+    <% end %>
+    <% i+=1 %>
+  <% end %>
+</table>
+
+<%= will_paginate(@stands, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>

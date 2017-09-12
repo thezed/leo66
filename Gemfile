@@ -16,8 +16,6 @@ gem 'coffee-rails', '~> 4.2.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -45,7 +43,11 @@ gem "will_paginate"
 gem "pg"
 gem 'devise'
 gem 'ckeditor'
-# gem 'newrelic_rpm'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'awesome_nested_set'
+gem 'the_sortable_tree'
+
 
 group :development, :test do
   gem 'sqlite3'

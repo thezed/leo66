@@ -1,0 +1,57 @@
+<h1><%= title @stand.category.name %></h1>
+
+<table>
+  <tr>
+    <td id='showpic'>
+      <%= image_tag @stand.image.url(:big), :alt => @stand.name, :title => @stand.name %>
+    </td>
+    <td style="vertical-align: middle !important;">
+      <p><b><%= @stand.name %></b></p>
+      
+      <p>
+        <b>Артикул:</b>
+        <%= @stand.artikul %>
+      </p>
+      
+      <p>
+        <b>Цена:</b>
+        <%= @stand.price %> руб.
+      </p>
+      
+      <p>
+        <b>Размер:</b>
+        <%= @stand.size %>
+      </p>
+      
+      <p>
+        <b>Формат карманов:</b>
+        <%= @stand.format %>
+      </p>
+      
+      <p>
+        <b>Дополнительно:</b>
+        <%= @stand.additional %>
+      </p>
+      
+      <%= render :partial => "orders/form" %>
+    </td>
+  </tr>
+</table>
+
+<br />
+<br />
+
+<h4>Другие товары:</h4>
+
+<div style="overflow: scroll; white-space: nowrap; max-width: 728px"> 
+  <% @thumbs.each do |thumb| %>
+    <%= link_to image_tag(thumb.image.url(:medium), style: 'height: 150px; width: auto'), thumb %></li>
+  <% end %>
+</div>
+
+<% if can? :edit, @stand %>
+	<p><%= link_to 'Редактировать', edit_stand_path(@stand) %></p>
+<% end %>
+
+<br />
+<p><%= link_to 'Назад', category_path(@stand.category) %></p>

@@ -5,7 +5,7 @@
 module LayoutHelper
   def title(page_title, show_title = true)
     content_for(:title) { page_title }
-    return "<h1>#{page_title}</h1>"
+    return page_title
   end
   
   def show_title?

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :categories do
+    collection do
+      post :rebuild
+    end
+  end
+  resources :stands
+  
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users,
     path: '', 
@@ -18,7 +25,7 @@ Rails.application.routes.draw do
   resources :prices
 
   
-  get 'stand', controller: 'stand', action: 'index'
+  get 'stand', to: 'stands#index'
     resources :standlagers, path: 'stand/lager'
     resources :standdous, path: 'stand/dou'
     resources :standpreds, path: 'stand/pred'
@@ -29,7 +36,7 @@ Rails.application.routes.draw do
     resources :standstickers, path: 'stand/stickers'
     resources :standadditionals, path: 'stand/additional'
     resources :standchils, path: 'stand/children'
-  
+
   resources :souvenirs, path: 'souvenirs'
   resources :awards
   resources :expos, path: 'expo'
