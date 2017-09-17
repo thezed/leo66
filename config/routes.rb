@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  resources :categories do
-    collection do
-      post :rebuild
-    end
-  end
-  resources :stands
   
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users,
@@ -24,6 +18,25 @@ Rails.application.routes.draw do
   resources :pages
   resources :prices
 
+  get 'signup', controller: 'users', action: 'new'
+  get 'logout', controller: 'user_sessions', action: 'destroy'
+  get 'login', controller: 'user_sessions', action: 'new'
+  resources :user_sessions
+  resources :users
+
+
+  get 'categories', to: 'categories#index'
+  resources :categories, path: '' do
+    collection do
+      post :rebuild
+    end
+    resources :stands, path: '', only: [:show], constraints: { id: /\d+/ }
+  end
+  
+  resources :stands, except: [:show]
+  
+  get '*path/:id', to: 'stands#show', constraints: { id: /\d+/ }
+  get '*path', to: 'categories#show'
   
   get 'stand', to: 'stands#index'
     resources :standlagers, path: 'stand/lager'
@@ -52,14 +65,9 @@ Rails.application.routes.draw do
   get 'dopsport', controller: 'dopsport', action: 'index'  
   resources :lights
   
-  get 'signup', controller: 'users', action: 'new'
-  get 'logout', controller: 'user_sessions', action: 'destroy'
-  get 'login', controller: 'user_sessions', action: 'new'
-  resources :user_sessions
-  resources :users
-
   get 'contacts', controller: 'contacts', action: 'index'
   get 'proezd', controller: 'proezd', action: 'index'
+
   
   root to: 'main#index'
 end

@@ -1,16 +1,18 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
   include ::TheSortableTreeController::Rebuild
   
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.nested_set
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @category = Category.find_by(permalink: params[:path].split('/').last) if params[:path].present?
     @stands = @category.stands.order(id: :asc).paginate :page => params[:page], :per_page => 24
     @thumbs = @category.stands
   end

@@ -1,5 +1,6 @@
 class StandsController < ApplicationController
   before_action :set_stand, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /stands
   # GET /stands.json
@@ -16,10 +17,12 @@ class StandsController < ApplicationController
   # GET /stands/new
   def new
     @stand = Stand.new
+    @category = Category.find_by(id: params[:category_id])
   end
 
   # GET /stands/1/edit
   def edit
+    @category = @stand.category
   end
 
   # POST /stands

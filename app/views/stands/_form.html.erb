@@ -12,7 +12,7 @@
   <% end %>
   <p>
     Категория<br />
-    <%= f.select :category_id, nested_options(Category.all, selected: Category.where(id: params[:category_id]), title: :name) %>
+    <%= f.select :category_id, nested_options(Category.all, selected: @category, title: :name) %>
   </p>
   <p>
     Артикул<br />

@@ -5,7 +5,7 @@
 <%= will_paginate(@stands, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
 
 <% if can? :create, Stand %>
-	<%= link_to 'Добавить стенд', new_stand_path %>
+	<div><%= link_to 'Добавить стенд', new_stand_path(category_id: @category.id) %></div>
 <% end %>
 
 <% i=1 %>
@@ -16,9 +16,9 @@
     <% end %>
     
     <td id="imagecell"> 
-      <%= link_to image_tag(stand.image.url(:medium), :alt => stand.name, :title => stand.name), stand %><br />
-		  <%= link_to "#{stand.artikul} #{stand.name}", stand %><br />
-	    <%= link_to "Узнать цену", stand, :class => "price_button" %>
+      <%= link_to image_tag(stand.image.url(:medium), alt: stand.name, title: stand.name), category_stand_path(stand.category, stand) %><br />
+		  <%= link_to "#{stand.artikul} #{stand.name}", category_stand_path(stand.category, stand) %><br />
+	    <%= link_to "Узнать цену", category_stand_path(stand.category, stand), class: "price_button" %>
     </td>
     
     <% if i==4 %>

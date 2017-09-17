@@ -9,6 +9,11 @@ class Category < ApplicationRecord
   has_many :stands, dependent: :destroy
   
   def to_param
-    permalink
+    absolute_permalink
+  end
+  
+  before_save :update_absolute_permalink
+  def update_absolute_permalink
+    self.absolute_permalink = self.self_and_ancestors.map(&:permalink).join('/')
   end
 end

@@ -85,13 +85,26 @@
   				          <%= link_to "Выход", logout_path %>
   				        <% end %>
   					  	</div>
-    						<%= render_navigation %>
+    						
+                <ul>
+                  <% Category.roots.each do |cat| %>
+                    <li id="main" class='<%= "#{'selected' if @category==cat or @category.try(:parent)==cat}" %>'>
+                      <%= link_to cat.name, category_path(cat).gsub('%2F', '/'), class: "#{'selected' if @category==cat or @category.try(:parent)==cat}" %>
+                      <% if cat.children.size > 0 %>
+                        <ul>
+                          <% cat.children.each do |pr| %>
+                            <li id="child" class='<%= "#{'selected' if @category==cat}" %>'>
+                              <%= link_to pr.name, category_path(pr).gsub('%2F', '/'), class: "#{'selected' if @category==cat}" %>
+                            </li>
+                          <% end %>
+                        </ul>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+
     						<br />
-    						<form method=get action='/search'>
-    							Поиск по сайту:
-    							<input type=text name=q size=20> 
-    							<input type=submit value='найти'>
-    						</form>
+    						
 					
     						<%#= render :partial => "orders/form" %>
           
@@ -137,7 +150,7 @@
   			  <table>
   				<tr>
   		      <td valign="top" style="width: 200px;">
-  		        <strong><%= link_to 'Информационные стенды', stands_path %></strong><br />
+  		        <strong><%#= link_to 'Информационные стенды', stands_path %></strong><br />
   		        <%= link_to 'Стенды для детских садов', standchils_path %><br />
   		        <%= link_to 'Наклейки на шкафчики', standstickers_path %><br />
   		        <%= link_to 'Стенды для школ', standschools_path %><br />

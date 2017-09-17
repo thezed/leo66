@@ -9,6 +9,9 @@ class Ability
     else
       can :read, :all
       can :create, :orders
+      cannot :index, Page
+      cannot :index, Stand
+      cannot :index, Category
     end
   end
 end
