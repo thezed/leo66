@@ -150,37 +150,33 @@
   			  <table>
   				<tr>
   		      <td valign="top" style="width: 200px;">
-  		        <strong><%#= link_to 'Информационные стенды', stands_path %></strong><br />
-  		        <%= link_to 'Стенды для детских садов', standchils_path %><br />
-  		        <%= link_to 'Наклейки на шкафчики', standstickers_path %><br />
-  		        <%= link_to 'Стенды для школ', standschools_path %><br />
-  		        <%= link_to 'Дополнительное образование', standdous_path %><br />
-  		        <%= link_to 'Детские лагеря', standlagers_path %><br />
-  		      </td>
-  		      <td valign="top" style="width: 200px;">			
-  		        <%= link_to 'Тематические планшеты', standthematics_path %><br />
-  		        <%= link_to 'Профилактика и безопасность', standsafeties_path %><br />
-  		        <%= link_to 'Профессиональные учебные заведения', standprofs_path %><br />
-  		        <%= link_to 'Стенды для предприятий', standpreds_path %><br />
-  		        <%= link_to 'Дополнительная продукция', standadditionals_path %><br />
-  		      </td>
-  		      <td valign="top" style="width: 200px;">
-  				    <strong><%= link_to 'Дополнительные услуги', dopballoon_path %></strong><br />
-  		        <%= link_to 'Оформление шарами', dopballoon_path %><br />
-  		        <%= link_to 'Оборудование для кабинетов образовательных учреждений', dopequipment_path %><br />
-  		        <%= link_to 'Спортинвентарь', dopsport_path %><br />
-  		        <%= link_to 'Световое оборудование', lights_path %><br />
+              <% count = Category.all.size %>
+              <% i = 0 %>
+              <% categories = [] %>
+              <% Category.roots.each do |cat| %>
+                <% categories << cat %>
+                <% cat.children.each do |pr| %>
+                  <% categories << pr %>
+                <% end %>
+              <% end %>
+              
+              <% categories.each do |cat| %>
+                <% if cat.root? %>
+                  <div><strong><%= link_to cat.name, category_path(cat).gsub('%2F', '/'), class: "#{'selected' if @category==cat or @category.try(:parent)==cat}" %></strong></div>
+                <% else %>
+                  <div><%= link_to cat.name, category_path(cat).gsub('%2F', '/'), class: "#{'selected' if @category==cat or @category.try(:parent)==cat}" %></div>
+                <% end %>
+                
+                <% i += 1 %>
+                <% if i == count/4+1 or i == count/2+2 or i == count*3/4+3 %>
+        		      </td><td valign="top" style="width: 200px;">
+                  <% i == 1 %>
+                <% end %>
+              <% end %>
+              <div><strong><%= link_to 'Контакты', contacts_path %></strong></div>
             </td>	
-            <td valign="top" style="width: 200px;">
-              <strong><%= link_to 'Выставочное оборудование', expos_path %></strong><br />
-              <%= link_to 'Широкоформатная печать', print_path %><br />
-              <strong><%= link_to 'Сувенирная продукция', souvenirs_path %></strong><br />
-              <%= link_to 'Наградная продукция', awards_path %><br />
-             	<strong><%= link_to 'Полиграфия', polygraphies_path %></strong><br />
-  				    <strong><%= link_to 'Прайс-листы', prices_path %></strong><br />
-  				    <strong><%= link_to 'Контакты', contacts_path %></strong><br />
-    				</tr>
-  			  </table>
+  				</tr>
+			  </table>
 				
   			г. Екатеринбург,  Чернышевского, 1 <br />
   			тел.: (343) 376-34-70, 376-49-96, e-mail: <a href="mailto:a1214@list.ru">a1214@list.ru</a><br />
