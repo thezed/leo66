@@ -16,9 +16,9 @@
     <% end %>
     
     <td id="imagecell"> 
-      <%= link_to image_tag(stand.image.url(:medium), alt: stand.name, title: stand.name), category_stand_path(stand.category, stand) %><br />
-		  <%= link_to "#{stand.artikul} #{stand.name}", category_stand_path(stand.category, stand) %><br />
-	    <%= link_to "Узнать цену", category_stand_path(stand.category, stand), class: "price_button" %>
+      <%= link_to image_tag(stand.image.url(:medium), alt: stand.name, title: stand.name), category_stand_path(stand.category, stand).gsub('%2F', '/') %><br />
+		  <%= link_to "#{stand.artikul} #{stand.name}", category_stand_path(stand.category, stand).gsub('%2F', '/') %><br />
+	    <%= link_to "Узнать цену", category_stand_path(stand.category, stand).gsub('%2F', '/'), class: "price_button" %>
     </td>
     
     <% if i==4 %>
