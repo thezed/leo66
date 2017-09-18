@@ -26,6 +26,11 @@ Rails.application.routes.draw do
 
 
   get 'categories', to: 'categories#index'
+  get 'categories/new', to: 'categories#new'
+  post 'categories', to: 'categories#create'
+  delete 'categories/*path', to: 'categories#destroy'
+  get 'categories/*path/edit', to: 'categories#edit'
+  
   resources :categories, path: '' do
     collection do
       post :rebuild
