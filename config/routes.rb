@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   
   root to: 'main#index'
 
+  # resources :categories, only: [:new, :edit, :update, :destroy]
   resources :categories, path: '' do
     collection do
       post :rebuild
@@ -42,6 +43,8 @@ Rails.application.routes.draw do
   
   resources :stands, except: [:show]
 
+  get '*path/edit', to: 'categories#edit'
+  delete '*path', to: 'categories#destroy'
   get '*path/:id', to: 'stands#show', constraints: { id: /\d+/ }
   get '*path', to: 'categories#show'
   
