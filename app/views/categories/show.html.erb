@@ -5,6 +5,7 @@
 <%= will_paginate(@stands, :previous_label => '« Предыдущая', :next_label => 'Следующая »') %>
 
 <% if can? :create, Stand %>
+	<div><%= link_to "Редактировать страницу", edit_category_path(@category).gsub('%2F', '/') %></div>
 	<div><%= link_to 'Добавить стенд', new_stand_path(category_id: @category.id) %></div>
 <% end %>
 

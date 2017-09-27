@@ -71,77 +71,80 @@
    	  <div id="top_nav">
 		    <ul>
 		      <li><%= link_to 'На главную', root_path %></li> 
-  			  <li><%= link_to 'Отзывы', page_path(11) %></li> 
-  			  <li id="shift"><%= link_to 'Прайсы', prices_path %></li>
+  			  <li><%= link_to 'Отзывы', '/pages/11' %></li> 
+  			  <li><%= link_to 'Акции', '/pages/12', style: 'color: red;' %></li> 
+  			  <li><%= link_to 'Прайсы', prices_path %></li>
   			  <li><%= link_to 'Контакты', contacts_path %></li> 
   			</ul>
 		  </div>
     		<div id="middle">
 		  		<table>
-  					<tr>
+					<tr>
 				      <td id="menu">					
-    						<div id="user_status">
+  							<div id="user_status">
   		       	    <% if current_user %>
   				          <%= link_to "Выход", logout_path %>
   				        <% end %>
   					  	</div>
     						
-                <ul>
-                  <% Category.roots.each do |cat| %>
-                    <li id="main" class='<%= "#{'selected' if @category==cat or @category.try(:parent)==cat}" %>'>
-                      <%= link_to cat.name, category_path(cat).gsub('%2F', '/'), class: "#{'selected' if @category==cat or @category.try(:parent)==cat}" %>
-                      <% if cat.children.size > 0 %>
-                        <ul>
-                          <% cat.children.each do |pr| %>
-                            <li id="child" class='<%= "#{'selected' if @category==cat}" %>'>
-                              <%= link_to pr.name, category_path(pr).gsub('%2F', '/'), class: "#{'selected' if @category==cat}" %>
-                            </li>
-                          <% end %>
-                        </ul>
-                      <% end %>
-                    </li>
-                  <% end %>
-                </ul>
+                  <ul>
+                    <% Category.roots.each do |cat| %>
+                      <li id="main" class='<%= "#{'selected' if @category==cat or @category.try(:parent)==cat}" %>'>
+                        <%= link_to cat.name, category_path(cat).gsub('%2F', '/'), class: "#{'selected' if @category==cat or @category.try(:parent)==cat}" %>
+                        <% if cat.children.size > 0 %>
+                          <ul>
+                            <% cat.children.each do |pr| %>
+                              <li id="child" class='<%= "#{'selected' if @category==cat}" %>' ="<%= "color: red;" if pr.permalink=='sale' %>">
+                                <%= link_to pr.name, category_path(pr).gsub('%2F', '/'), class: "#{'selected' if @category==cat}", style: pr.permalink=='sale' ? "color: red;" : nil %>
+                              </li>
+                            <% end %>
+                          </ul>
+                        <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
 
-    						<br />
-    						
-					
-    						<%#= render :partial => "orders/form" %>
-          
-    						<br/>
-					
-    						<div style="text-align: center;" >
-    						  <%= link_to (image_tag "cert_sm.jpg")+raw('<br/>Подарочный сертификат'), asset_path("cert.jpg"), :rel=>'cert', :class=>'cert' %><br/><br/>
-    						  <script>
-      						  $(document).ready(function() {
-                      $("img.cert").each(function() {
-                          var $this = $(this);
-                          var src = $this.attr('src');
-                          $this.addClass('cert');
-                          var a = $('<a class="cert" rel="feedback"/>').attr('href', src);
-                          $this.wrap(a);
-                      });
-                      $('a.cert').colorbox({rel:'cert'});
-      						  });
-    						  </script>
-					  
-    						  <%= link_to (image_tag "stend_katalog_cover_20113_s.jpg")+raw('<br/>Заказать бесплатный каталог'), catalogs_path %><br/>
-    						</div>
-  					  </td>
+  			<br />
+			
+	
+  			<%#= render :partial => "orders/form" %>
+
+  			<br/>
+	
+  			<div style="text-align: center;" >
+  			  <%= link_to (image_tag "cover1.jpg", style: 'width: 150px')+raw('<br/>Заказать бесплатный каталог'), 'https://cloud.mail.ru/public/5hZg/ZfT34k6AW', target: '_blank' %>
+          <br/><br/>
+
+  			  <%= link_to (image_tag "cert_sm.jpg")+raw('<br/>Подарочный сертификат'), asset_path("cert.jpg"), :rel=>'cert', :class=>'cert' %><br/><br/>
+  			  <script>
+  			  $(document).ready(function() {
+            $("img.cert").each(function() {
+                var $this = $(this);
+                var src = $this.attr('src');
+                $this.addClass('cert');
+                var a = $('<a class="cert" rel="feedback"/>').attr('href', src);
+                $this.wrap(a);
+            });
+            $('a.cert').colorbox({rel:'cert'});
+  			  });
+  			  </script>
+	  
+  			</div>
+  	  </td>
   
-  			      <td id="content">
-  						  <%- flash.each do |name, msg| -%>
-  					      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-  					    <%- end -%>
-				    
-		            <%- if show_title? -%>
-		              <h1><%= yield(:title) %></h1>
-		            <%- end -%>
+			      <td id="content">
+						  <% flash.each do |name, msg| %>
+					      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+					    <% end %>
+			    
+	            <% if show_title? %>
+	              <h1><%= yield(:title) %></h1>
+	            <% end %>
 
-		            <div><%= yield %></div>
-		          </td>
-				    </tr>
-				  </table>
+	            <div><%= yield %></div>
+	          </td>
+			    </tr>
+			  </table>
 			</div>
 			
   		<div id="footer">
