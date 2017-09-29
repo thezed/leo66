@@ -1,4 +1,4 @@
-<%=raw title "Прайсы" %>
+<h1><%= title "Прайсы" %></h1>
 
 <% if can? :create, @prices %>
 	<%= link_to 'Добавить прайс', new_price_path %>

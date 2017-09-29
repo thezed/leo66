@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   
   root to: 'main#index'
 
+  get 'contacts', controller: 'contacts', action: 'index'
+  get 'proezd', controller: 'proezd', action: 'index'
+
   # resources :categories, only: [:new, :edit, :update, :destroy]
   resources :categories, path: '' do
     collection do
@@ -75,7 +78,4 @@ Rails.application.routes.draw do
   # get 'dopsport', controller: 'dopsport', action: 'index'
   # resources :lights
   
-  get 'contacts', controller: 'contacts', action: 'index'
-  get 'proezd', controller: 'proezd', action: 'index'
-
 end
