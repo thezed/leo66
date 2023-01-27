@@ -49,6 +49,11 @@ services:
     restart: "no"
     ports: []
   
+networks:
+  default:
+    external: true
+    name: slam_network
+
 volumes:
   gem_cache:
   db_data:
