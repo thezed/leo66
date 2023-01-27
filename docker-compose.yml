@@ -42,7 +42,7 @@ services:
 
   # assets-compile:
   #   <<: *app
-  #   command: bundle exec rails assets:compile
+  #   command: bundle exec rails assets:precompile
   #   ports: []
   
 volumes:

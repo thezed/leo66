@@ -9,6 +9,9 @@ RUN apk add --update --no-cache \
     tzdata \
     shared-mime-info \
     bash \
+    curl \
+    yarn \
+    imagemagick \
     mc
 
 ENV RAILS_ROOT /rails_app
