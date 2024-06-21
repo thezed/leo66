@@ -1,4 +1,4 @@
-class CreateExpos < ActiveRecord::Migration
+class CreateExpos < ActiveRecord::Migration[4.2]
   def self.up
     create_table :expos do |t|
       t.string :artikul

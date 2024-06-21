@@ -1,4 +1,4 @@
-class AddAttachmentsImageToPrintplacard < ActiveRecord::Migration
+class AddAttachmentsImageToPrintplacard < ActiveRecord::Migration[4.2]
   def self.up
     add_column :printplacards, :image_file_name, :string
     add_column :printplacards, :image_content_type, :string

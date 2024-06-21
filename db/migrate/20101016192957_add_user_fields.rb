@@ -1,4 +1,4 @@
-class AddUserFields < ActiveRecord::Migration
+class AddUserFields < ActiveRecord::Migration[4.2]
     def self.up
       add_column :users, :login_count, :integer, :null => false, :default => 0
       add_column :users, :failed_login_count, :integer, :null => false, :default => 0

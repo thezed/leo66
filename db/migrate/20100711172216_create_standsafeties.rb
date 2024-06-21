@@ -1,4 +1,4 @@
-class CreateStandsafeties < ActiveRecord::Migration
+class CreateStandsafeties < ActiveRecord::Migration[4.2]
   def self.up
     create_table :standsafeties do |t|
       t.string :artikul

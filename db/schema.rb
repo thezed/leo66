@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20170917163225) do
 
-  create_table "awards", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "awards", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.index ["rgt"], name: "index_categories_on_rgt"
   end
 
-  create_table "ckeditor_assets", force: :cascade do |t|
+  create_table "ckeditor_assets", id: :serial, force: :cascade do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
     t.integer "data_file_size"
@@ -59,7 +62,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
   end
 
-  create_table "expos", force: :cascade do |t|
+  create_table "expos", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -76,7 +79,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "lights", force: :cascade do |t|
+  create_table "lights", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.string "name"
     t.integer "price"
@@ -92,7 +95,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.datetime "image_updated_at"
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.string "name"
     t.string "phone"
@@ -103,14 +106,14 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "city"
   end
 
-  create_table "pages", force: :cascade do |t|
+  create_table "pages", id: :serial, force: :cascade do |t|
     t.string "title"
     t.text "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "polygraphies", force: :cascade do |t|
+  create_table "polygraphies", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -127,7 +130,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "prices", force: :cascade do |t|
+  create_table "prices", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "order"
     t.text "text"
@@ -139,7 +142,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.datetime "pricefile_updated_at"
   end
 
-  create_table "printplacards", force: :cascade do |t|
+  create_table "printplacards", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -156,7 +159,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "printposters", force: :cascade do |t|
+  create_table "printposters", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -173,7 +176,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "printwallpapers", force: :cascade do |t|
+  create_table "printwallpapers", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -190,7 +193,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "souvenirs", force: :cascade do |t|
+  create_table "souvenirs", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -207,7 +210,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "standadditionals", force: :cascade do |t|
+  create_table "standadditionals", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -224,7 +227,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "standchils", force: :cascade do |t|
+  create_table "standchils", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -241,7 +244,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "standdous", force: :cascade do |t|
+  create_table "standdous", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -258,7 +261,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "standlagers", force: :cascade do |t|
+  create_table "standlagers", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -275,7 +278,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "standpreds", force: :cascade do |t|
+  create_table "standpreds", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -292,7 +295,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "standprofs", force: :cascade do |t|
+  create_table "standprofs", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -322,14 +325,14 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.integer "category_id"
+    t.bigint "category_id"
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_stands_on_category_id"
   end
 
-  create_table "standsafeties", force: :cascade do |t|
+  create_table "standsafeties", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -346,7 +349,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "standschools", force: :cascade do |t|
+  create_table "standschools", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -363,7 +366,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "standstickers", force: :cascade do |t|
+  create_table "standstickers", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -380,7 +383,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "standthematics", force: :cascade do |t|
+  create_table "standthematics", id: :serial, force: :cascade do |t|
     t.string "artikul"
     t.integer "price"
     t.integer "pricefigure"
@@ -397,7 +400,7 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.string "name"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -413,4 +416,5 @@ ActiveRecord::Schema.define(version: 20170917163225) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "stands", "categories"
 end

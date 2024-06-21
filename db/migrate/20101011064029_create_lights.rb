@@ -1,4 +1,4 @@
-class CreateLights < ActiveRecord::Migration
+class CreateLights < ActiveRecord::Migration[4.2]
   def self.up
     create_table :lights do |t|
       t.string :artikul

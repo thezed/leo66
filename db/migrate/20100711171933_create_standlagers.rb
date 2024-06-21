@@ -1,4 +1,4 @@
-class CreateStandlagers < ActiveRecord::Migration
+class CreateStandlagers < ActiveRecord::Migration[4.2]
   def self.up
     create_table :standlagers do |t|
       t.string :artikul

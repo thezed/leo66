@@ -1,4 +1,4 @@
-class CreatePrintposters < ActiveRecord::Migration
+class CreatePrintposters < ActiveRecord::Migration[4.2]
   def self.up
     create_table :printposters do |t|
       t.string :artikul

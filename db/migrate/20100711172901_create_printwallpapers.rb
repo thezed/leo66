@@ -1,4 +1,4 @@
-class CreatePrintwallpapers < ActiveRecord::Migration
+class CreatePrintwallpapers < ActiveRecord::Migration[4.2]
   def self.up
     create_table :printwallpapers do |t|
       t.string :artikul

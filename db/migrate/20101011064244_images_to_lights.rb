@@ -1,4 +1,4 @@
-class ImagesToLights < ActiveRecord::Migration
+class ImagesToLights < ActiveRecord::Migration[4.2]
     def self.up
       add_column :lights, :image_file_name, :string
       add_column :lights, :image_content_type, :string

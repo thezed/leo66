@@ -1,4 +1,4 @@
-class AddNamesAgain < ActiveRecord::Migration
+class AddNamesAgain < ActiveRecord::Migration[4.2]
   def self.up
     add_column :standstickers, :name, :string
     add_column :standadditionals, :name, :string

@@ -1,4 +1,4 @@
-class CreatePolygraphies < ActiveRecord::Migration
+class CreatePolygraphies < ActiveRecord::Migration[4.2]
   def self.up
     create_table :polygraphies do |t|
       t.string :artikul

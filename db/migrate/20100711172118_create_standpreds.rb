@@ -1,4 +1,4 @@
-class CreateStandpreds < ActiveRecord::Migration
+class CreateStandpreds < ActiveRecord::Migration[4.2]
   def self.up
     create_table :standpreds do |t|
       t.string :artikul

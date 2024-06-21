@@ -1,51 +1,53 @@
 services:
-  postgres14:
-    image: postgres:14
+  postgres:
+    image: postgres:16
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: leo66_production
+      PGDATA: /var/lib/postgresql/data/pgdata
+      # POSTGRES_DB: leo66_production
     volumes:
       - db_data:/var/lib/postgresql/data
       - ./leo66_production.sql:/leo66_production.sql
       # psql -U postgres leo66_production < /leo66_production.sql
       
-  adminer:
-    image: adminer
-    # restart: always
-    ports:
-      - 8080:8080
+  # adminer:
+  #   image: adminer
+  #   # restart: always
+  #   ports:
+  #     - 8080:8080
       
-  rails-server: &app
+  rails_app: &app
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - .:/app
+      - .:/rails_app
       - gem_cache:/usr/local/bundle/gems
-      - node_modules:/app/node_modules
+      - node_modules:/rails_app/node_modules
     ports:
       - 3000:3000
     depends_on:
-      - postgres14
+      - postgres
     environment:
-      DATABASE_URL: postgres://postgres:password@postgres14:5432/leo66_production
+      DATABASE_URL: postgres://leo66:password@postgres:5432/leo66_production
       # RAILS_ENV: production
       SECRET_KEY_BASE: 3618000f42306bdab5489fcb2cd84449a5759c94ce539861a53f5c07913e35c8b82459b0620f28c96c2c8ade053b115ee7f1a811326a51664162541924089718
       RAILS_SERVE_STATIC_FILES: true
+      RAILS_LOG_TO_STDOUT: true
     tmpfs:
       - /tmp
       
-  db-migrate:
-    <<: *app
-    command: bundle exec rails db:create #db:migrate
-    ports: []
+  # db-migrate:
+  #   <<: *app
+  #   command: bundle exec rails db:create #db:migrate
+  #   ports: []
 
   # assets-compile:
   #   <<: *app
   #   command: bundle exec rails assets:precompile
   #   ports: []
-  
+
 volumes:
   gem_cache:
   db_data:
-  node_modules:     
+  node_modules:

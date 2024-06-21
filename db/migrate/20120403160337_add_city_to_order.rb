@@ -1,4 +1,4 @@
-class AddCityToOrder < ActiveRecord::Migration
+class AddCityToOrder < ActiveRecord::Migration[4.2]
   def self.up
     add_column :orders, :city, :string
   end

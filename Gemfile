@@ -35,19 +35,19 @@ group :development do
 end
 
 gem 'i18n'
-gem "cancancan"
-gem "paperclip"
-gem "russian"
-gem "simple-navigation"
-gem "will_paginate"
-gem "pg"
+gem 'cancancan'
+gem 'paperclip'
+gem 'russian'
+gem 'simple-navigation'
+gem 'will_paginate'
+gem 'pg'
 gem 'devise', '~> 4.8.0'
 gem 'ckeditor'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'awesome_nested_set'
 gem 'the_sortable_tree'
-
+gem 'lograge'
 
 group :development, :test do
   gem 'sqlite3'

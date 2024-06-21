@@ -1,4 +1,4 @@
-class AddAttachmentsImageToStandpred < ActiveRecord::Migration
+class AddAttachmentsImageToStandpred < ActiveRecord::Migration[4.2]
   def self.up
     add_column :standpreds, :image_file_name, :string
     add_column :standpreds, :image_content_type, :string

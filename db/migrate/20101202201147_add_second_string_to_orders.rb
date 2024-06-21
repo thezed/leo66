@@ -1,4 +1,4 @@
-class AddSecondStringToOrders < ActiveRecord::Migration
+class AddSecondStringToOrders < ActiveRecord::Migration[4.2]
   def self.up
     add_column :orders, :name_com, :string 
   end

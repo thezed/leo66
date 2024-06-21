@@ -1,4 +1,4 @@
-class CreateSouvenirs < ActiveRecord::Migration
+class CreateSouvenirs < ActiveRecord::Migration[4.2]
   def self.up
     create_table :souvenirs do |t|
       t.string :artikul

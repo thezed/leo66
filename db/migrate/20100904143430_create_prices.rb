@@ -1,4 +1,4 @@
-class CreatePrices < ActiveRecord::Migration
+class CreatePrices < ActiveRecord::Migration[4.2]
   def self.up
     create_table :prices do |t|
       t.string :name

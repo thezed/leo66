@@ -1,4 +1,4 @@
-class AddNames < ActiveRecord::Migration
+class AddNames < ActiveRecord::Migration[4.2]
   def self.up
     add_column :awards, :name, :string
     add_column :expos, :name, :string

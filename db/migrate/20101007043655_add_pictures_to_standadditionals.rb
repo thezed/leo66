@@ -1,4 +1,4 @@
-class AddPicturesToStandadditionals < ActiveRecord::Migration
+class AddPicturesToStandadditionals < ActiveRecord::Migration[4.2]
     def self.up
       add_column :standadditionals, :image_file_name, :string
       add_column :standadditionals, :image_content_type, :string

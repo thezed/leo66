@@ -1,4 +1,4 @@
-class AddAttachmentsImageToSouvenir < ActiveRecord::Migration
+class AddAttachmentsImageToSouvenir < ActiveRecord::Migration[4.2]
   def self.up
     add_column :souvenirs, :image_file_name, :string
     add_column :souvenirs, :image_content_type, :string

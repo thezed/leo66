@@ -1,4 +1,4 @@
-class AddAttachmentsImageToStandsafety < ActiveRecord::Migration
+class AddAttachmentsImageToStandsafety < ActiveRecord::Migration[4.2]
   def self.up
     add_column :standsafeties, :image_file_name, :string
     add_column :standsafeties, :image_content_type, :string

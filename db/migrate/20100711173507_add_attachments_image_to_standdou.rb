@@ -1,4 +1,4 @@
-class AddAttachmentsImageToStanddou < ActiveRecord::Migration
+class AddAttachmentsImageToStanddou < ActiveRecord::Migration[4.2]
   def self.up
     add_column :standdous, :image_file_name, :string
     add_column :standdous, :image_content_type, :string

@@ -1,4 +1,4 @@
-class AddAttachmentsPricefileToPrice < ActiveRecord::Migration
+class AddAttachmentsPricefileToPrice < ActiveRecord::Migration[4.2]
   def self.up
     add_column :prices, :pricefile_file_name, :string
     add_column :prices, :pricefile_content_type, :string

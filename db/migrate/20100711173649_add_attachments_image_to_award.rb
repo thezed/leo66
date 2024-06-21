@@ -1,4 +1,4 @@
-class AddAttachmentsImageToAward < ActiveRecord::Migration
+class AddAttachmentsImageToAward < ActiveRecord::Migration[4.2]
   def self.up
     add_column :awards, :image_file_name, :string
     add_column :awards, :image_content_type, :string

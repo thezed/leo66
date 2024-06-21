@@ -1,4 +1,4 @@
-class CreateStandprofs < ActiveRecord::Migration
+class CreateStandprofs < ActiveRecord::Migration[4.2]
   def self.up
     create_table :standprofs do |t|
       t.string :artikul

@@ -1,4 +1,4 @@
-class CreateStanddous < ActiveRecord::Migration
+class CreateStanddous < ActiveRecord::Migration[4.2]
   def self.up
     create_table :standdous do |t|
       t.string :artikul

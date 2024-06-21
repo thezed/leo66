@@ -1,4 +1,4 @@
-class CreateStandstickers < ActiveRecord::Migration
+class CreateStandstickers < ActiveRecord::Migration[4.2]
   def self.up
     create_table :standstickers do |t|
       t.string :artikul

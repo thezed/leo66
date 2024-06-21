@@ -1,4 +1,4 @@
-class AddAttachmentsImageToStandchildren < ActiveRecord::Migration
+class AddAttachmentsImageToStandchildren < ActiveRecord::Migration[4.2]
   def self.up
     add_column :standchildrens, :image_file_name, :string
     add_column :standchildrens, :image_content_type, :string

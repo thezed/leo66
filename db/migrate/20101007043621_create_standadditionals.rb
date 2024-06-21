@@ -1,4 +1,4 @@
-class CreateStandadditionals < ActiveRecord::Migration
+class CreateStandadditionals < ActiveRecord::Migration[4.2]
   def self.up
     create_table :standadditionals do |t|
       t.string :artikul

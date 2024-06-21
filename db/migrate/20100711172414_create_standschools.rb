@@ -1,4 +1,4 @@
-class CreateStandschools < ActiveRecord::Migration
+class CreateStandschools < ActiveRecord::Migration[4.2]
   def self.up
     create_table :standschools do |t|
       t.string :artikul
